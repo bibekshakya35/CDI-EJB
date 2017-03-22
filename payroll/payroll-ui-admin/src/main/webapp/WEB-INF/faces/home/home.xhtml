@@ -1,0 +1,45 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                template="/WEB-INF/faces/template.xhtml" 
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                >
+    <ui:include src="../includes/header.xhtml"/>
+    <ui:param name="title" value="Home"/>
+
+    <ui:define name="content">
+        <div>Hi #{identityBean.identity.userfullname}</div>
+        <div class="row" style="background: #ffffee">
+            <div class="col-md-3 col-xs-3">
+                <img class="img-circle img-responsive" src="#{request.contextPath}/img/airplane.png" style="width: 80px;height: 80px;float: left;"/>
+                <div class="row" style="margin-top: 20px;margin-right: 100px;">
+
+                    <p style="text-align: center;">#{attendanceController.absentNumber}<br></br>Total Absent Today</p> 
+
+                </div>
+            </div>
+            <div class="col-md-3 col-xs-3" style="margin-left: -40px;">
+                <img class="img-circle img-responsive" src="#{request.contextPath}/img/employee.png" style="width: 80px;height: 80px;float: left;"/>
+                <div class="row" style="margin-top: 20px;margin-right: 100px;">
+
+                    <p style="text-align: center;margin-right: 20px;">#{attendanceController.totalNoOfEmployee}<br></br>Total Employee</p> 
+
+                </div>
+            </div>
+            <div class="col-md-3 col-xs-3" style="margin-left: -40px;">
+                <img class="img-circle img-responsive" src="#{request.contextPath}/img/employee.png" style="width: 80px;height: 80px;float: left;"/>
+                <div class="row" style="margin-top: 20px;margin-right: 100px;">
+
+                    <p style="text-align: center;margin-right: 20px;">Rs. #{salaryController.employee.salaryTransaction.actualSalary}<br></br>Total Salary</p> 
+
+                </div>
+            </div>
+        </div>
+
+    </ui:define>
+
+
+</ui:composition>
+
+
+
+

@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>np.com.drose</groupId>
+    <artifactId>parkgarau</artifactId>
+    <version>1.0.0</version>
+    <packaging>pom</packaging>
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
+    <name>parkgarau</name>
+    <!-- Modules in project -->
+    <modules>
+        <module>parkgarau-data</module>
+        <module>parkgarau-platform</module>
+        <module>parkgarau-services</module>
+        <module>parkgarau-ui-admin</module>
+    <module>parkgarau-ws</module>
+  </modules>
+    <dependencyManagement>
+        <dependencies>
+            <!--dependency for java-ee specification-->
+            <dependency>
+                <groupId>javax</groupId>
+                <artifactId>javaee-api</artifactId>
+                <version>7.0</version>
+                <scope>provided</scope>
+            </dependency>
+            <!--dependency for omnifaces jsf utility libraries new edition-->
+            <dependency>
+                <groupId>org.omnifaces</groupId>
+                <artifactId>omnifaces</artifactId>
+                <version>2.5.1</version>
+            </dependency>
+            <!--dependency for Apache Common Lang   -->
+            <dependency>
+                <groupId>org.apache.commons</groupId>
+                <artifactId>commons-lang3</artifactId>
+                <version>3.4</version>
+                <type>jar</type>
+            </dependency>
+            <!--dependency for primefaces-->
+            <dependency>
+                <groupId>net.bootsfaces</groupId>
+                <artifactId>bootsfaces</artifactId>
+                <version>0.8.5</version>
+                <scope>compile</scope>
+            </dependency>
+            <dependency>
+                <!-- https://mvnrepository.com/artifact/org.primefaces/primefaces -->
+                
+                <groupId>org.primefaces</groupId>
+                <artifactId>primefaces</artifactId>
+                <version>6.0</version>
+                
+                <scope>compile</scope>
+            </dependency>
+            <!--dependency for ocpsoft-rewrite, url-pattern-->
+            <dependency>
+                <groupId>org.ocpsoft.rewrite</groupId>
+                <artifactId>rewrite-servlet</artifactId>
+                <version>3.4.1.Final</version>
+            </dependency>
+            <dependency>
+                <groupId>org.ocpsoft.rewrite</groupId>
+                <artifactId>rewrite-config-prettyfaces</artifactId>
+                <version>3.4.1.Final</version>
+            </dependency>
+            <!--Bean Validation API-->
+            <dependency>
+                <groupId>javax.validation</groupId>
+                <artifactId>validation-api</artifactId>
+                <version>1.1.0.Final</version>
+            </dependency>
+            <!-- https://mvnrepository.com/artifact/javax.el/el-api -->
+            
+            <!--Dependency for Expression Language-->
+            <dependency>
+                <groupId>javax.el</groupId>
+                <artifactId>el-api</artifactId>
+                <version>2.2</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+</project>

@@ -1,0 +1,59 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                template="/WEB-INF/faces/template.xhtml"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:prettyfaces="http://ocpsoft.com/prettyfaces"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                xmlns:component="http://java.sun.com/jsf/composite/components/toolbar"
+                >
+    <ui:define name="title">List of Company</ui:define>
+    <ui:define name="toolbar">
+        <component:toolbar onSave="sdf"
+                           onNew="pretty:company_add" 
+                           newPermissionKey="COMPANY_ADD"
+                          
+                           />
+    </ui:define>
+    <ui:define name="content">
+        <div class="row">
+            <p:growl id="messages"  showDetail="true" severity="info" />
+            <div class="col-sm-12 col-xs-12 col-md-12 col-lg-12">
+                <h:form>
+                    <p:dataTable var="company" value="#{companyListController.list}" binding="#{table}">
+                        <f:facet name="header">
+                            List of Company
+                        </f:facet>
+                        <p:column headerText="SN" sortBy="#{table.rowIndex +1}">
+                            <h:outputText value="#{table.rowIndex +1}" />
+                        </p:column>
+                        <p:column headerText="Company Code">
+                            <h:outputText value="#{company.code}" />
+                        </p:column>
+                        <p:column headerText="Company Name">
+                            <h:outputText value="#{company.companyName}" />
+                        </p:column>
+                        <p:column headerText="Company Email">
+                            <h:outputText value="#{company.companyEmail}" />
+                        </p:column>
+                        <p:column headerText="option">
+                            <p:column headerText="option">
+                                <prettyfaces:link mappingId="company_edit" title="View" style="margin-left: 40px;">
+                                    <f:param value="#{company.code}" />
+                                    <span class="btn btn-primary"><i class="fa fa-edit"></i> Edit</span>
+                                </prettyfaces:link>
+                            </p:column>
+                        </p:column>
+                    </p:dataTable>
+
+
+                </h:form>
+            </div>
+
+        </div>
+
+
+    </ui:define>
+</ui:composition>
+
+

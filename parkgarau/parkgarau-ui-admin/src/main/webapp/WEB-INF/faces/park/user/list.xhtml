@@ -1,0 +1,56 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                template="/WEB-INF/faces/template.xhtml"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:prettyfaces="http://ocpsoft.com/prettyfaces"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                xmlns:component="http://java.sun.com/jsf/composite/components/toolbar"
+                >
+    <ui:define name="title">List of USER</ui:define>
+    <ui:define name="toolbar">
+        <component:toolbar onSave="sdf"
+                           onNew="pretty:user_add" 
+                           newPermissionKey="USER_ADD"
+
+                           />
+    </ui:define>
+    <ui:define name="content">
+        <p:growl id="messages"  showDetail="true" severity="info"  />
+
+
+        <h:form id="form">
+            <p:dataTable var="user" value="#{userListController.list}">
+                <f:facet name="header">
+                    List of Users
+                </f:facet>
+                <p:column headerText="Username">
+                    <h:outputText value="#{user.userName}" />
+                </p:column>
+                <p:column headerText="Email Id">
+                    <h:outputText value="#{user.userProfile.emailId}" />
+                </p:column>
+                <p:column headerText="userType">
+                    <h:outputText value="#{user.userType}" />
+                </p:column>
+                <p:column headerText="Full Name">
+                    <h:outputText value="#{user.userProfile.fullname}" />
+                </p:column>
+                <p:column headerText="User info">
+                    <h:outputText value="#{user.userProfile.basicInfo}" />
+                </p:column>
+
+
+                <p:column headerText="option">
+                    <prettyfaces:link mappingId="user_edit" title="View" style="margin-left: 40px;">
+                        <f:param value="#{user.userName}" />
+                        <span class="btn btn-primary"><i class="fa fa-edit"></i> Edit</span>
+                    </prettyfaces:link>
+                </p:column>
+            </p:dataTable>
+        </h:form>
+
+    </ui:define>
+</ui:composition>
+
+

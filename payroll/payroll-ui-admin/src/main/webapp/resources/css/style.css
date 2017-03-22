@@ -1,0 +1,96 @@
+
+.left {float: left; 
+       margin-top:5%; 
+     
+}
+
+.right {float:next;
+        background-color: #acc;
+        margin-top:7%; 
+     
+
+}
+
+.clear,.clearer {clear: both;}
+.clearer {
+    display: block;
+    font-size: 0;
+    height: 0;
+    line-height: 0;
+}
+
+
+#workFlowName {
+    position: absolute;
+    left:1%;
+    top:22%;
+}
+
+/*
+        Example specifics
+------------------------------------------------------------------- */
+
+/* Layout */
+
+/*#center-wrapper {
+    margin: 0 auto;
+    width: 520px;
+}*/
+
+/* Columns */
+
+/*.column {
+        margin-left: 2%;
+        width: 32%;
+}*/
+/*.column.first {margin-left: 0;}*/
+
+
+/* Sortable items */
+
+.sortable-list {
+    background-color: #006666;
+    list-style: none;
+    margin: 0;
+    min-height: 60px;
+    padding: 2px;
+}
+
+.sortable-list2{
+    background-color: #31708f;
+    list-style: none;
+    margin: 0;
+    min-height: 60px;
+    padding: 2px;
+}
+.sortable-item {
+    background-color: #FFF;
+    border: 1px solid #111;
+    cursor: move;
+    display: block;
+/*    font-weight: bold;*/
+    margin-bottom: 5px;
+    padding: 1px;
+    text-align: center; width:150px;
+}
+/* Containment area */
+/*#containment {
+    background-color: #22A;
+    height: 130px;
+}*/
+/* Item placeholder (visual helper) */
+.placeholder {
+    background-color: #FFF;
+    border: 1px dashed #666;
+    height: 25px;
+    margin-bottom: 1px;
+}
+#post > div.left > div:nth-child(1) > ul {float: left;
+                                                 width: 155px;
+}
+/*#example-1-2 > div.right > div:nth-child(1) > ul {width: 180px;float: left;}*/
+
+/*#example-1-4 > div.left > div:nth-child(1) > ul {float: left;*/
+/*                                                 width: 180px;
+}*/
+#postpriority > div.right > div:nth-child(1) > ul {width: 155px;float:right;}

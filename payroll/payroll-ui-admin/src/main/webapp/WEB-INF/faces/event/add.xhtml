@@ -1,0 +1,69 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                template="/WEB-INF/faces/template.xhtml"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
+                xmlns:p="http://primefaces.org/ui">
+
+    <ui:param name="title" value="Add A Event"/>
+
+    <ui:define name="breadcrum1">
+        <li><h:link value="Add Event" outcome="pretty:add_event"/></li>
+
+    </ui:define>
+    <ui:define name="content">
+        <div class="container-fluid" style="margin-top: 70px; ">
+            <div class="row">
+                <div style="margin-left: 500px;">
+                    <div class="panel panel-primary" style="width: 500px">
+                        <div class="panel-heading"><p  style="color: white;text-align: center">Add Event</p></div>
+                        <div class="panel-body" >
+                            <h:form id="form" class="form-horizontal" style="margin-right: 70px;">
+                                <p:messages id="messages" showDetail="true" closable="true" globalOnly="true" autoUpdate="true" style="text-align: center"/>
+                                <div class="form-group">
+                                    <label class="control-label col-sm-6">Event Title</label>
+                                    <div class="col-sm-6">
+                                        <h:inputText class="input-group" value="#{addEventController.event.header}"/>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-sm-6">Event Specification</label>
+                                    <div class="col-sm-6">
+                                        <h:inputTextarea value="#{addEventController.event.specification}" class="form-control"/>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-sm-6">Event Content</label>
+                                    <div class="col-sm-6">
+                                        <h:inputTextarea value="#{addEventController.event.content}" class="form-control"/>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-sm-6">Event Date</label>
+                                    <div class="col-sm-6">
+                                        <p:calendar value="#{addEventController.event.dateofEvent}" navigator="true" class="input-sm">
+                                        </p:calendar>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-sm-6">Event Place</label>
+                                    <div class="col-sm-6">
+                                        <h:inputText class="input-group" value="#{addEventController.event.place}"/>
+                                    </div>
+                                </div>
+
+                                <span class="offset2"><h:commandButton action="#{addEventController.addEvent()}" styleClass="btn btn-primary" value="Save"></h:commandButton>
+                                </span>
+
+                            </h:form>
+
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </ui:define>
+</ui:composition>

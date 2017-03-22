@@ -1,0 +1,74 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:prettyfaces="http://ocpsoft.com/prettyfaces"
+
+      >
+    <h:head>
+        <title>Park Garau :: <ui:insert name="title"/></title>
+      
+        <meta charset="UTF-8"></meta>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"></meta>
+        <link href="#{request.contextPath}/css/bootstrap-responsive.css"
+              rel="stylesheet" />
+        <link href="#{request.contextPath}/css/bootstrap.css"
+              rel="stylesheet" />
+        <link href="#{request.contextPath}/css/pages.css"
+              rel="stylesheet" />
+        <link href="#{request.contextPath}/css/home.css"
+              rel="stylesheet" />
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+        <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous"/>
+        <!--
+            jQUERY
+        -->
+        <link rel="shortcut icon" href="#{request.contextPath}/img/favicon.ico" />
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+    </h:head>
+    <h:body style="overflow-x: hidden;">
+
+        <!--Navigation bar-->
+        <nav class="navbar navbar-inverse">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <prettyfaces:link mappingId="home"><h3 style="color: white;">Park Garau</h3></prettyfaces:link>
+                </div>
+                <ul class="nav navbar-nav navbar-right">
+                    <li><ui:insert name="toolbar"/></li>
+                    <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#"><span class="glyphicon glyphicon-user"></span><h:outputFormat value=" #{identityBean.identity.userFullName}"/></a>
+                        <ul class="dropdown-menu">
+                            <li><prettyfaces:link mappingId="changePassword"><span class="glyphicon glyphicon-question-sign"></span> Preference</prettyfaces:link></li>
+                            <li><prettyfaces:link mappingId="logout" style="color: #080808"><span class="glyphicon glyphicon-log-out"></span> Log out</prettyfaces:link></li>
+
+                        </ul>
+                    </li>
+                </ul>
+
+
+            </div>
+        </nav>
+        <div class="row">
+            <div class="col-md-2 col-xs-2">
+                <ui:include src="/WEB-INF/faces/park/menu.xhtml"/>
+            </div>
+
+            <div class="col-md-10 col-xs-10">
+                <ui:insert name="content" />
+            </div>    
+
+
+        </div>
+
+        <hr/>
+        <footer class="footer">
+            <p class="pull-left">
+                &copy; Powered By: <a href="http://drose.com.np" target="_blank">D'Rose Technologies</a> 2016
+            </p>
+            <p class="pull-right">V 0.0.1 Alpha</p>
+        </footer>
+    </h:body>
+</html>
+

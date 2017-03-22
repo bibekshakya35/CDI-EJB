@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>np.com.drose</groupId>
+        <artifactId>parkgarau</artifactId>
+        <version>1.0.0</version>
+    </parent>
+    <artifactId>parkgarau-services</artifactId>
+    <packaging>jar</packaging>
+    <dependencies>
+        <!--dependencies for parkgarau-platform--> 
+        <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>parkgarau-data</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <!--dependency for pargarau-data-->
+        <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>parkgarau-platform</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <!--dependency for java-ee spec version maintain on parent--> 
+        <dependency>
+            <groupId>javax</groupId>
+            <artifactId>javaee-api</artifactId>
+            <scope>provided</scope>
+        </dependency>
+        <!--dependency for apache-common-lang for lang utilities-->
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+        </dependency>
+        <!--dependency for jackson-annotations-->
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-annotations</artifactId>
+            <version>2.8.3</version>
+        </dependency>
+        <!-- dependency for gson used: json string to java object-->
+        <dependency>
+            <groupId>com.google.code.gson</groupId>
+            <artifactId>gson</artifactId>
+            <version>2.7</version>
+        </dependency>
+        <!--dependencies for http-request-->
+        <dependency>
+            <groupId>com.github.kevinsawicki</groupId>
+            <artifactId>http-request</artifactId>
+            <version>6.0</version>
+        </dependency>
+    </dependencies>
+   
+    <properties>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
+    </properties>
+</project>

@@ -1,0 +1,57 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                template="/WEB-INF/faces/template.xhtml"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:component="http://java.sun.com/jsf/composite/components/toolbar">
+    <ui:define name="title">Filter Vehicle Type</ui:define>
+    <ui:define name="content">
+        <h:form>
+           <p:messages id="messages" showDetail="true" autoUpdate="true" closable="true"/>
+                <table class="table table-condensed">
+                    <tr>
+                        <td><p:outputLabel value="Vehicle Code"/></td>
+                        <td><p:inputText  validator="codevalidator" value="#{vehicleCategoryFilterController.vehicleTypeFilter.vehicleCode}"/></td>
+                    </tr>
+                    
+                    <tr>
+                        <td>
+                            <p:outputLabel for="fromdatetime" value="From" />
+                            <p:calendar id="fromdatetime" value="#{vehicleCategoryFilterController.vehicleTypeFilter.createdFromDate}">
+                                <f:convertDateTime pattern="yyyy-MM-dd HH:mm:ss.SSS"/>
+                            </p:calendar></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <p:outputLabel for="todatetime" value="To:" />
+                            <p:calendar id="todatetime" value="#{vehicleCategoryFilterController.vehicleTypeFilter.createdToDate}">
+                                <f:convertDateTime pattern="yyyy-MM-dd HH:mm:ss.SSS"/>
+                            </p:calendar></td>
+                    </tr>
+                    <tr>
+                        <td><h:commandButton value="submit" >
+                                <f:ajax render=":list" execute="@form" listener="#{vehicleCategoryFilterController.submit}"/>
+                            </h:commandButton>
+                        </td>
+                    </tr>
+                </table>
+        </h:form>
+        <h:form prependId="false" id="list">
+             <p:dataTable id="listfilter" var="vehicle" value="#{vehicleCategoryFilterController.vehicleTypes}">
+                    <f:facet name="header">
+                        List of Vehicle Type
+                    </f:facet>
+                    <p:column headerText="code">
+                        <h:outputText value="#{vehicle.code}" />
+                    </p:column>
+                    
+                    <p:column headerText="Vehicle Decription">
+                        <h:outputText value="#{vehicle.description}" />
+                    </p:column>
+
+
+                </p:dataTable>      
+        </h:form>
+    </ui:define>
+</ui:composition>

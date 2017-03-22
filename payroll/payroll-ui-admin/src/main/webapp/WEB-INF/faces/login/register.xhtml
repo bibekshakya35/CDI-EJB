@@ -1,0 +1,121 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Login</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <link href="css/default.css" rel="stylesheet"/>
+        <link href="css/cssLayout.css" rel="stylesheet"/>
+        <link href="css/bootstrap.min.css" rel="stylesheet"/>
+        <link href="css/bootstrap.css" rel="stylesheet"/>
+        <link href="css/bootstrap-responsive.css" rel="stylesheet"/>
+
+
+        <!-- Latest compiled and minified CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous"/>
+
+        <!-- Optional theme -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous"/>
+
+        <!-- Latest compiled and minified JavaScript -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+    </h:head>
+    <h:body>
+
+        <div class="panel panel-primary" style="width: 600px;margin-left: 400px;margin-top: 100px; ">
+            <div class="panel-heading">
+                <p style="text-align: center;color: white;font: 20px bold;">Add A User</p>
+            </div>
+            <div class="panel-body">
+                <p:messages id="messages" showDetail="true" autoUpdate="true" closable="true" globalOnly="true" style="text-align: center;"/>
+                <h:form class="form-horizontal" role="form" id="form">
+                    <div class="form-group" >
+                        <p:outputLabel value="User Full Name" class="text-primary control-label col-sm-6" style="text-align: center"/>
+                        <div class="col-sm-6">
+                            <p:inputText value="#{loginController.user.fullname}"
+                                         requiredMessage="Please Enter Your Full name"
+                                         id="userfullname"
+                                         required="true"/>
+                            <p:watermark for="userfullname" value="User full Name"/>
+                            <p:message for="userfullname"/>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <p:outputLabel value="Username" class="text-primary control-label col-sm-6" style="text-align: center;"/>
+                        <div class="col-sm-6">
+                            <p:inputText value="#{loginController.user.userName}" required="true" label="username"
+                                         size="20"
+                                         requiredMessage="Please Enter your unique Username"
+                                         id="username"
+                                         />
+                            <p:watermark for="username" value="User Name"/>
+                            <p:message for="username"/>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <p:outputLabel value="Email Address" class="text-primary control-label col-sm-6" style="text-align: center;"/>
+                        <div class="col-sm-6">
+                            <p:inputText id="email" required="true" label="email" size="20"
+                                         requiredMessage="Please Enter your email address"
+                                         validatorMessage="Invalid email format"
+                                         value="#{loginController.user.emailAddress}">
+                                <f:validateRegex
+                                    pattern="^[_A-Za-z0-9-\+]+(\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\.[A-Za-z0-9]+)*(\.[A-Za-z]{2,})$" />
+                            </p:inputText>
+                            <p:watermark for="email" value="Email Address"/>
+                            <p:message for="email"/>
+                        </div>
+                    </div>
+                    <div class="form-group">
+
+                        <p:outputLabel value="Password" class="text-primary control-label col-sm-6" style="text-align: center;"/>
+                        <div class="col-sm-6">
+                            <p:password value="${loginController.user.password}" id="password"
+                                        requiredMessage="Enter Your Message"/>
+                            <p:watermark for="password" value="Password"/>
+                            <p:message for="password"/>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <p:outputLabel value="Confirm Password" class="text-primary control-label col-sm-6" style="text-align: center;"/>
+                        <div class="col-sm-6">
+                            <p:password id="confirmPassword" value="#{loginController.confirmPassword}"
+                                        requiredMessage="Enter Your Confirm Password"/>
+                            <p:watermark value="Confirm Password" for="confirmPassword"/>
+                            <p:message for="confirmPassword"/>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <p:outputLabel value="Role" class="text-primary control-label col-sm-6" style="text-align: center;"/>
+                        <div class="col-sm-6">
+                            <h:selectOneMenu value="#{loginController.user.roles}" id="roles"
+                                             class='form-control small' style="width: 150px;">
+                                <f:selectItems value="#{loginController.roles}"/>
+                            </h:selectOneMenu>
+                            <p:watermark for="roles" value="Roles"/>
+                            <p:message for="roles"/>
+
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <h:commandLink action="#{loginController.addUser}" class="btn btn-sm btn-primary" style="color: white;background-position: center;margin-left: 250px;"><i class="glyphicon glyphicon-save" style="color: white;"></i> Save</h:commandLink>
+                    </div>
+                </h:form>
+            </div>
+        </div>
+
+        <script src="js/bootstrap.js"></script>
+        <script src="js/bootstrap.min.js"></script>
+        <script src="js/jquery-2.1.4.js"></script>
+
+        <script src="js/jquery-2.1.4.min.js"></script>
+        <script src="js/jquery-ui.js"></script>
+        <script src="js/jquery-ui.min.js"></script>
+    </h:body>
+</html>
+
+

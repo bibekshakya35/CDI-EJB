@@ -1,0 +1,87 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                template="/WEB-INF/faces/template.xhtml"
+                xmlns:component="http://java.sun.com/jsf/composite/components/toolbar"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                xmlns:p="http://primefaces.org/ui">
+    <ui:define name="title">Add Parking Charge Setup</ui:define>
+     <ui:define name="toolbar">
+        <component:toolbar onSave="sdf"
+                           onCancel="pretty:parkfee_list"
+                           savePermissionKey="PARK_CHARGE_ADD"
+                           cancelPermissionKey="PARK_CHARGE_ADD"
+                           />
+    </ui:define>
+    <ui:define name="content">
+        <div class="form-group">
+            <p:messages id="messages" showDetail="true"/>
+            <h:form id="object" prependId="false" 
+                            onkeypress="if (event.keyCode === 13) {
+                                return false;
+                            }">
+               
+                <table  class="table table-condensed">
+                    <tr>
+                        <!--pcs parking charge setup-->
+                        <td><p:outputLabel  value="pcs code" /></td>
+                        <td><p:inputText id="pcs_code" value="#{parkingChargeAddController.instance.code}"  validator="codevalidator" required="true" 
+                                         requiredMessage="Parking charge Setup code is mandatory"></p:inputText>
+                            <p:watermark for="pcs_code" value="Enter Park Fee  Code" id="pcs_Code_watermark"/>
+                            <p:message for="pcs_code"/>
+                        </td>
+
+                    </tr>
+                    <tr>
+                        <td><p:outputLabel value="Description"/></td>
+                        <td><p:inputText id="pcs_name" value="#{parkingChargeAddController.instance.description}" 
+                                         requiredMessage="Parking Fee Name is mandatory"
+                                         required="true"/>
+                            <p:watermark for="pcs_name" value="Enter Park Fee Name" id="pcs_name_watermark"/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><p:outputLabel value="Parking unit"/></td>
+                        <td>
+                            <h:selectOneMenu value="#{parkingChargeAddController.instance.parkingUnit}">
+                                <f:selectItems value="#{parkingChargeAddController.parkingUnit}"/>
+                            </h:selectOneMenu>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <p:outputLabel value="Parking Unit Charge Code" />
+                        </td>
+                        <td>
+                            <p:inputNumber value="#{parkingChargeAddController.instance.perUnitCharge}"/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <p:outputLabel value="vehicle Name"/>
+                        </td>
+                        <td>
+                            <h:selectOneMenu value="#{parkingChargeAddController.parkingCharge.vehicleSubCategoryCode}" >
+                                <f:selectItems value="#{parkingChargeAddController.vehicleSubCategorys}" var="vehicle" itemLabel="#{vehicle.code}" itemValue="#{vehicle.code}"/>
+                            </h:selectOneMenu>
+                        </td>
+
+                    </tr>
+                    <tr>
+                        <td>
+                            <p:outputLabel value="Company Name"/>
+                        </td>
+                        <td>
+                            <h:selectOneMenu value="#{parkingChargeAddController.instance.companyCode}" >
+                                <f:selectItems value="#{parkingChargeAddController.companies}" var="company" itemLabel="#{company.code}" itemValue="#{company.code}"/>
+                            </h:selectOneMenu>
+                        </td>
+
+                    </tr>
+                </table> 
+                <p:commandButton update=":messages" action="#{parkingChargeAddController.onSave()}" id="sdf" style="display: none;" value="Add Charge Set Up"/>
+            </h:form>
+        </div>
+    </ui:define>
+</ui:composition>
+

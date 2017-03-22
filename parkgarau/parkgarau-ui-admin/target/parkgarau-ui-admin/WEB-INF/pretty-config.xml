@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pretty-config xmlns="http://ocpsoft.org/schema/rewrite-config-prettyfaces"
+               xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+               xsi:schemaLocation="http://ocpsoft.org/schema/rewrite-config-prettyfaces
+                      http://ocpsoft.org/xml/ns/prettyfaces/rewrite-config-prettyfaces.xsd">
+    <url-mapping id="login">
+        <pattern value="/login" />
+        <view-id value="/login.xhtml" />
+    </url-mapping>
+    
+    <url-mapping id="logout">
+        <pattern>/logout</pattern>
+        <view-id>/login.xhtml</view-id>
+        <action>#{logoutBean.doLogout}</action>
+    </url-mapping> 
+    
+    <url-mapping id="changePassword">
+        <pattern value="/park/profile/change/password">
+        </pattern>
+        <view-id value="/WEB-INF/faces/park/user/change_password.xhtml"/>
+    </url-mapping>
+
+    <url-mapping id="home">
+        <pattern value="/park/home" />
+        <view-id value="/WEB-INF/faces/park/home.xhtml" />
+    </url-mapping>
+ 
+    <url-mapping id="role_list">
+        <pattern value="/park/role/list" />
+        <view-id value="/WEB-INF/faces/park/role/list.xhtml" />
+    </url-mapping>  
+    <url-mapping id="role_add">
+        <pattern value="/park/role/add" />
+        <view-id value="/WEB-INF/faces/park/role/add.xhtml" />
+    </url-mapping> 
+    <url-mapping id="role_edit">
+        <pattern value="/park/role/#{roleEditController.selectedItem}/edit" />
+        <view-id value="/WEB-INF/faces/park/role/edit.xhtml" />
+        <action>#{roleEditController.loadSelectedItem}</action>
+    </url-mapping> 
+    
+    <url-mapping id="group_list">
+        <pattern value="/park/group/list"/>
+        <view-id value="/WEB-INF/faces/park/group/list.xhtml"/>
+    </url-mapping>
+    
+    <url-mapping id="group_add">
+        <pattern value="/park/group/add"/>
+        <view-id value="/WEB-INF/faces/park/group/add.xhtml"/>
+    </url-mapping>
+    
+    <url-mapping id="group_edit">
+        <pattern value="/park/group/#{groupPermissionEditController.selectedItem}/edit"/>
+        <view-id value="/WEB-INF/faces/park/group/edit.xhtml"/>
+        <action>#{groupPermissionEditController.loadSelectedItem}</action>
+    </url-mapping>
+    
+    <!--Url mapping for Vehicle Type-->
+    <url-mapping id="vehicletype_add">
+        <pattern value="/park/vehicletype/add"/>
+        <view-id value="/WEB-INF/faces/park/vehicletype/add.xhtml"/>
+    </url-mapping>
+    <url-mapping id="vehicletype_list">
+        <pattern value="/park/vehicletype/list"/>
+        <view-id value="/WEB-INF/faces/park/vehicletype/list.xhtml"/>
+    </url-mapping>
+    <url-mapping id="vehicletype_edit">
+        <pattern value="/park/vehicletype/#{vehicleCategoryEditController.selectedItem}/edit"/>
+        <view-id value="/WEB-INF/faces/park/vehicletype/edit.xhtml"/>
+        <action>#{vehicleCategoryEditController.loadSelectedItem}</action> 
+    </url-mapping>
+    
+    <url-mapping id="vehicletype_filter">
+        <pattern value="/park/vehicletype/filter"/>
+        <view-id value="/WEB-INF/faces/park/vehicletype/filter.xhtml"/>
+    </url-mapping>
+  
+     
+    <!--Url mapping for Vehicle Sub Type-->
+    <url-mapping id="vehiclesubtype_add">
+        <pattern value="/park/vehiclesubtype/add"/>
+        <view-id value="/WEB-INF/faces/park/vehiclesubtype/add.xhtml"/>
+    </url-mapping>
+    <url-mapping id="vehiclesubtype_list">
+        <pattern value="/park/vehiclesubtype/list"/>
+        <view-id value="/WEB-INF/faces/park/vehiclesubtype/list.xhtml"/>
+    </url-mapping>
+    <url-mapping id="vehiclesubtype_edit">
+        <pattern value="/park/vehiclesubtype/#{vehicleSubCategoryEditController.selectedItem}/edit"/>
+        <view-id value="/WEB-INF/faces/park/vehiclesubtype/edit.xhtml"/>
+        <action>#{vehicleSubCategoryEditController.loadSelectedItem}</action>
+    </url-mapping>
+    
+    <url-mapping id="parkfee_add">
+        <pattern value="/park/parkfee/add"/>
+        <view-id value="/WEB-INF/faces/park/parkfee/add.xhtml"/>
+    </url-mapping>
+    <url-mapping id="parkfee_list">
+        <pattern value="/park/parkfee/list"/>
+        <view-id value="/WEB-INF/faces/park/parkfee/list.xhtml"/>
+    </url-mapping>
+    <url-mapping id="parkfee_edit">
+        <pattern value="/park/parkfee/#{parkingChargeEditController.selectedItem}/edit"/>
+        <view-id value="/WEB-INF/faces/park/parkfee/edit.xhtml"/>
+        <action>#{parkingChargeEditController.loadSelectedItem}</action>           
+    </url-mapping>   
+    
+    <url-mapping id="user_add">
+        <pattern value="/park/user/add"/>
+        <view-id value="/WEB-INF/faces/park/user/add.xhtml"/>
+    </url-mapping>
+    <url-mapping id="user_list">
+        <pattern value="/park/user/list"/>
+        <view-id value="/WEB-INF/faces/park/user/list.xhtml"/>
+    </url-mapping>
+    <url-mapping id="user_edit">
+        <pattern value="/park/user/#{userEditController.selectedItem}/edit"/>
+        <view-id value="/WEB-INF/faces/park/user/edit.xhtml"/>
+        <action>#{userEditController.loadSelectedItem}</action>           
+    </url-mapping>   
+    <url-mapping id="company_add">
+        <pattern value="/park/company/add"/>
+        <view-id value="/WEB-INF/faces/park/company/add.xhtml"/>
+    </url-mapping>
+    <url-mapping id="company_list">
+        <pattern value="/park/company/list"/>
+        <view-id value="/WEB-INF/faces/park/company/list.xhtml"/>
+    </url-mapping>
+    <url-mapping id="company_edit">
+        <pattern value="/park/company/#{companyEditController.selectedItem}/edit"/>
+        <view-id value="/WEB-INF/faces/park/company/edit.xhtml"/>
+        <action>#{companyEditController.loadSelectedItem}</action>           
+    </url-mapping>   
+    
+</pretty-config>

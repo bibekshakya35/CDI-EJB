@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.1" xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
+  <persistence-unit name="PAYROLL_PU" transaction-type="JTA">
+    <jta-data-source>java:/jboss/datasources/PAYROLL_DS</jta-data-source>
+    <!--    <class>np.com.drose.data.modules.employee.entity.Persons</class>
+    <class>np.com.drose.data.modules.employee.domain.Employee</class>-->
+    <class>np.com.drose.data.modules.employee.domain.Employee</class>
+    <class>np.com.drose.data.modules.employee.reln.Address</class>
+    <class>np.com.drose.data.modules.employee.reln.Attendance</class>
+    <class>np.com.drose.data.modules.employee.reln.Contact</class>
+    <class>np.com.drose.data.modules.employee.reln.JobDetail</class>
+    <class>np.com.drose.data.modules.employee.reln.Salary</class>
+    <properties>
+      <property name="hibernate.hbm2ddl.auto" value="update"/>
+      <property name="hibernate.show_sql" value="true"/>
+      <property name="hibernate.format_sql" value="false"/>
+      <property name="hibernate.case.use_query_cache" value="false"/>
+      <!-- 2nd level cache -->
+    </properties>
+  </persistence-unit>
+</persistence>

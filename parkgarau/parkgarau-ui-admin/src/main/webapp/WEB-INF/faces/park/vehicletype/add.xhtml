@@ -1,0 +1,57 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                template="/WEB-INF/faces/template.xhtml"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:component="http://java.sun.com/jsf/composite/components/toolbar">
+    <ui:define name="title">Add Vehicle Type</ui:define>
+    <ui:define name="toolbar">
+        <component:toolbar  onSave="sdf" onCancel="pretty:vehicletype_list"
+                            savePermissionKey="VEHICLE_CATEGORY_ADD"
+                            cancelPermissionKey="VEHICLE_CATEGORY_ADD"
+                            />
+    </ui:define>
+    <ui:define name="content">
+        
+        
+        <div class="form-group">
+            <h:form  prependId="false" id="object" onkeypress="if (event.keyCode === 13) { return false; }">  
+                <p:messages id="messages" showDetail="true" autoUpdate="true" closable="true"/>
+                <table  class="table table-condensed">
+                    <tr>
+
+                        <td><p:outputLabel  value="Vehicle Type code" /></td>
+                        <td><p:inputText id="vehicle_type_code" validator="codevalidator" value="#{vehicleCategoryAddController.instance.code}"  required="true" 
+                                         requiredMessage="Vehicle Type code is mandatory"></p:inputText>
+                            <p:watermark for="vehicle_type_code" value="Enter Vehicle Type Code" id="vehicle_type_Code_watermark"/>
+                        </td>
+
+                    </tr>
+                    <tr>
+                         <td><p:outputLabel  value="Vehicle Type Name" /></td>
+                         <td><p:inputText id="vehicle_type_name" value="#{vehicleCategoryAddController.instance.name}" required="true" 
+                                         requiredMessage="Vehicle  Type name is mandatory"></p:inputText>
+                            <p:message for="vehicle_type_name"/>
+                            <p:watermark for="vehicle_type_name" value="Enter Vehicle Type Name" id="vehicle_type_name_watermark"/>
+                        </td>
+                    </tr>
+                   
+                    <tr>
+                        <td><p:outputLabel value="Vehicle Type Description : "/></td>
+                        <td><p:inputText id="vehicle_type_description" value="#{vehicleCategoryAddController.instance.description}"
+                                         requiredMessage="Description is mandatory"
+                                         required="true"/>
+                            <p:watermark for="vehicle_type_description" value="Enter Vehicle Description" id="vehicle_type_description_watermark"/>
+                        </td>
+
+                    </tr>
+                </table> 
+                <div class="form-group col-sm-offset-5">
+                    <p:commandButton action="#{vehicleCategoryAddController.onSave()}" update=":messages" value="Add Vehicle Type" id="sdf" style="display: none;"/>
+                </div>
+            </h:form>
+        </div>
+    </ui:define>
+</ui:composition>
+

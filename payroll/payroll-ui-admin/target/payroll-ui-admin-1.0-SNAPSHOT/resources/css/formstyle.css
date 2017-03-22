@@ -1,0 +1,497 @@
+/* 
+    Document   : formstyle
+    Created on : Jun 11, 2014, 11:15:24 AM
+    Author     : win 7
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+.tabsBis{
+    height:5%;
+    background-color: #111;
+    padding-top: 0px;
+    /*margin: 10px;*/
+    border:1px solid white;
+ 
+}
+.active:hover a { color:#fff; }
+/*#myTab li.active a {
+    background:#ffffff;
+}*/
+
+
+root { 
+    display: block;
+
+}
+
+.error {
+    color: #ff0000;
+    font-family:"Lucida Grande", "Lucida Sans Unicode", Arial, Helvetica, Verdana, sans-serif;
+    font-size: 12px;
+    white-space: nowrap;
+
+}
+
+.errorblock {
+    color: #000;
+    background-color: #ffEEEE;
+    border: 1px solid #ff0000;
+    text-align: center; 
+    padding: 1px;
+    margin: 1px;
+}
+.errorinput {
+    border: 1px solid #ff0000;
+}
+.successblock {
+    color: #000;
+    background-color: #ffEEEE;
+    border: 1px solid #339900;
+    text-align: center; 
+    padding: 1px;
+    margin: 1px;
+}
+input, textarea{
+    padding: 0 6px;
+    border: solid 1px #999;
+    outline: 1px;
+    font: normal 12px/100% Verdana, Tahoma, sans-serif;
+    width: 200px;
+    height:25px;
+    background: #FFFFFF;
+    margin-bottom: 2px;
+
+}
+select{
+    border: solid 1px #999;
+    margin:2px;
+}
+
+
+textarea {
+    width: 400px;
+    max-width: 400px;
+    height: 150px;
+    line-height: 150%;
+    margin:2px;
+}
+
+input:hover, textarea:hover, select:hover
+input:focus, textarea:focus {
+    border: solid 1px #22cd33;
+
+}
+.submit input {
+    width:100px; 
+    background: #2a6496;
+    border: 0;
+    text-align:center;
+    font-size:14px;
+    color: #FFFFFF;
+    padding:4px;
+}
+.submit input:active {
+    padding:10px;
+    text-decoration:none;
+    vertical-align: top;
+    color:#00ff66;
+}
+/*input, textarea, select{
+    box-shadow: rgba(0,0,0, 0.1) 0px 0px 8px;
+    -moz-box-shadow: rgba(0,0,0, 0.1) 0px 0px 8px;
+    -webkit-box-shadow: rgba(0,0,0, 0.1) 0px 0px 8px;
+
+}
+input, textarea, select {
+    background: -webkit-gradient(linear, left top, left 25, from(#FFFFFF), color-stop(4%, #EEEEEE), to(#FFFFFF));
+    background: -moz-linear-gradient(top, #FFFFFF, #EEEEEE 1px, #FFFFFF 25px); 
+}*/
+::-webkit-input-placeholder { /* WebKit browsers */
+    color:    #999;
+}
+:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+    color:    #999;
+    opacity:  1;
+}
+::-moz-placeholder { /* Mozilla Firefox 19+ */
+    color:    #999;
+    opacity:  1;
+}
+:-ms-input-placeholder { /* Internet Explorer 10+ */
+    color:    #999;
+}
+.formtitle{
+    font-family:sans-serif;
+    font-size: 18px;
+    color: #ffffff;
+    background-color: #66afe9;
+    font-size-adjust: inherit;
+    font-weight:100;
+
+    text-align: center;
+}
+
+
+.formlinks  {
+    font-size: 13px;
+    height:12px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    margin-bottom:5px;
+    margin-left:0px;
+}
+
+.formlinks ul li{
+    display:inline;
+    margin: 0px;
+    float:left;
+    list-style: none;
+    margin-bottom: 5px;
+    border:1px solid #3f3731;
+
+}
+
+.linkTo {
+
+
+    background-color: #2a6496;
+    color: #EEEEEE;
+    border:1px solid #3f3731;
+    padding:3px;
+    margin-bottom:5px;
+
+
+}
+.linkTo:hover {
+
+    background-color: #226da3;
+    border:1px solid #3f3731;
+    color:#EEEEEE;
+
+}
+.linkTo :hover  a{
+    text-decoration: none;
+}
+
+.main-font{
+
+    font-size:15px;
+}
+.entry-sheet th{
+    
+
+     background-color: #5F9EA0;
+     color:white;
+}
+.entry-sheet{
+
+
+    background-color: #5F9EA0;
+    color:white;
+}
+
+.resize-font{
+    font-family: sans-serif;
+    font-size: 13px;
+    color: #000000;
+    background-color: #ffffff;
+    font-size-adjust: inherit;
+    font-weight: bold;
+    border-top-left-radius: 2em;
+    border-top-right-radius: 2em;
+    text-align: left;
+
+}
+
+
+
+.formtitle-subtitle{
+    font-family: sans-serif;
+    font-size: 15px;
+    width:auto;
+    color: #ffffff;
+    background-color: #66afe9;
+    font-size-adjust: inherit;
+    font-weight: bold;
+    text-align: center;
+}
+
+.form-table {
+    table-layout: fixed;
+    background-color: #FFFFfe;
+    margin-top:1% ;
+    margin-bottom: 1% ;
+    border:1px solid #cccccc;
+    /*border:1px solid black;*/
+    
+
+}
+.form-table2 {
+    table-layout: fixed;
+    background-color: #FFFFfe;
+    margin-top:1% ;
+    margin-bottom: 1% ;
+ 
+}
+.form-main-table{
+    margin-top:0px;
+    width:100%;
+    /*min-width:1000px;*/ 
+    background-color: #FFFFfe;
+    height:100%;
+   
+
+
+}
+.form-main-table td{
+   
+    width:900px;
+    
+}
+
+.form-title-tr{
+    background-color: #FFFFFF;
+}
+.form-subtable{
+    box-shadow: rgba(0,0,0, 0.1) 0px 0px 8px;
+    -moz-box-shadow: rgba(0,0,0, 0.1) 0px 0px 8px;
+    -webkit-box-shadow: rgba(0,0,0, 0.1) 0px 0px 8px;
+    table-layout: fixed;
+    font-family:"Lucida Grande", "Lucida Sans Unicode", Arial, Helvetica, Verdana, sans-serif;
+    font-size: 12px;
+    border:1px solid #cccccc;
+}
+.formtitle1{
+    background-color:#66AFE9;
+    text-align:center;
+    width:10%;
+    color:white;
+}
+
+.regular-checkbox {
+    height:13px;     
+    width:18px; 
+    font-size:13px; 
+    font-weight:100;
+}
+
+
+.radioBtn{
+    height:13px;     
+    width:18px; 
+}
+
+.bisTabs{
+    margin-top:9px;
+    background-color:#fffffe;
+
+}
+#application_view{
+    width:100%;
+    height:100%; 
+    display:inline;
+    background-color:#eee;
+}
+
+#application_history{
+    width:100%;
+    border:1px solid #cccccc;
+    margin-bottom:1%; 
+    padding:5px; 
+     
+}
+#document_list{
+    background-color:#fffffe;
+    width:17%;
+    min-height:100%;
+    float:left;
+    padding:5px; 
+    margin-top:0px; 
+    border:1px solid #cccccc;
+    display:block;
+}
+
+.application_loan_form_table{
+    margin-top:0px; 
+    background-color: #fff; 
+    width:82%;
+    min-height:100%; 
+    float:right;
+    display:block;
+}
+
+.application_details{
+    min-height:30%; 
+    background-color: #fffffe; 
+    padding:5px; 
+    margin-bottom:10px;
+    border:1px solid #cccccc;
+}
+
+#loan_details{
+    min-height:30%; 
+    background-color: #fffffe; 
+    margin-bottom:10px;
+    padding:5px; 
+    border:1px solid #cccccc;
+}
+
+#remarks_proceed{
+    min-height:40%;
+    background-color: #fffffe; 
+    margin-top:5px;
+    padding:5px;
+    border:1px solid #cccccc;
+}
+
+#buttonGrp{
+    /*this is in the applicationViewPage*/
+    display:inline;
+
+}
+#btn1{
+    float:left;
+}
+#btn2{
+    float:next;
+}
+#btn3{
+    float: end;
+}
+
+#subtable{
+    margin-left:8%; 
+    width:45%;
+    border:1px solid #e0e0e0; 
+}
+
+
+
+
+#workFlow td font{
+    font-size:1px; 
+    color: #009966;
+}
+
+.applicationview_thead tr {
+    background-color:#007665 !important;
+    color:white;
+    border:1px solid black;
+}
+
+
+.lab{
+    font-size:18px;
+    font-weight:100;
+    color: #2a6496;
+    margin-bottom:2px; 
+}
+.lab2{
+    font-size:16px;
+    font-weight:100;
+    color: #2a6496;
+}
+.inside_applicationview{
+    border:1px solid #333333;
+    margin-bottom:1%; 
+}
+
+.display thead{
+    font-size:15px; 
+    
+}
+
+.display tbody{
+    font-size:14px; 
+}
+
+table tr td{
+    font-size: 14px;
+    padding:1px; 
+    font-weight: 100;
+}
+
+/*this is for the tabs inside the applicationView page*/
+
+.applicationView_tab_buttons{
+    margin-top:15%; 
+    
+}
+.applicationView_tab_buttons tr td {
+    background-color:#2a6496;
+    border-bottom:5px solid white;
+    color:white;
+    height:30px;
+    font-size: 13px;
+    text-align:center; width:100%;
+    
+    text-decoration-line: none; 
+    border-top-right-radius:0.5em;
+    border-top-left-radius:0.5em;
+    border-bottom-right-radius: 0.5em;
+    border-bottom-left-radius: 0.5em;
+ }
+ 
+ .applicationView_tab_buttons tr td a {
+    width:100%;
+    color:white;
+    font-size: 14px;
+   
+ }
+ .applicationView_tab_buttons a:hover {
+    
+    color:white;
+    text-decoration: none;
+ }
+ .applicationView_tab_buttons tr td:hover{
+     background-color: #66AFE9;
+ }
+ 
+/* .id{
+     margin-top:0px; 
+ }*/
+ 
+ .id2 tr:nth-child(even) {
+     background-color:#F4F4e3;
+ }
+ .id2 tr:nth-child(odd) {
+     background-color:#EFF1F1;
+ }
+ 
+ 
+/* .applicationview_thead tr:first-child {
+     background-color: #009966;
+ }*/
+ /*this is in the listApplication.jsp*/
+ 
+/*.testaftercheck{
+    font-size:13px;
+    font-weight:100; 
+     
+}*/
+/*this id is for the subtable inside the addEmployee page for workFlow*/
+/*#subtable{
+  width:50%;
+ }*/
+/*.list-table td {
+    border:1px solid black;
+
+}*/
+
+/*.list-table .tr-header{
+    background-color: teal; 
+    color: white; 
+    text-align: center;
+    height:40px;
+}*/
+/*.list-table tr:hover td, .list-table tr:hover th {
+    background-color: #00ff66;
+}*/
+/*.list-table tr{
+    background-color: white; 
+    color: black; 
+    text-align: center;
+    height:30px;
+}*/
+

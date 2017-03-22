@@ -1,0 +1,46 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                template="/WEB-INF/faces/template.xhtml"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
+                xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+    <ui:param name="title" value="List"/>
+    <ui:define name="breadcrum1">
+        <li><h:link value="List Event" outcome="pretty:salary_list"/></li>
+
+    </ui:define>
+    <ui:define name="content">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-10 col-md-10 span3">
+
+
+                    <p:messages id="messages" autoUpdate="true" closable="true" globalOnly="true"/>
+                    <h:form id="form">
+                        <p:growl id="msgs" showDetail="true" />
+
+                        <c:forEach var="event" items="#{listEventController.listEvents}">
+                            <p:accordionPanel>
+                                <p:tab title="#{event.header}">
+                                    <h:panelGrid columns="1" cellpadding="10">
+                                         <div style="background-color: whitesmoke;width: 600px;">
+                                            <img src="../../imageshandler/event.jpg" class="img-responsive img-circle" style="width: 100px;height: 100px;margin-left: 200px;"/>
+                                           
+                                                Date: <p style="text-align: center;">#{event.dateofEvent}</p>
+                                                Place: <p style="text-align: center;">#{event.place}</p>
+                                                Specification: <p class="text-success" style="text-align: center;">#{event.specification}</p>
+                                                Content: <p class="text-primary" style="text-align: center;">#{event.content}</p>
+                                            </div>
+                                    </h:panelGrid>
+                                </p:tab>
+                            </p:accordionPanel>
+                        </c:forEach>
+                    </h:form></div></div></div></ui:define>
+
+
+
+
+</ui:composition>
+

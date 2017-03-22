@@ -1,0 +1,48 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                template="/WEB-INF/faces/template.xhtml"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:component="http://java.sun.com/jsf/composite/components/toolbar">
+    <ui:define name="title">Edit Vehicle Type</ui:define>
+    <ui:define name="toolbar">
+        <component:toolbar  onSave="sdf" onCancel="pretty:vehicletype_list"
+                            savePermissionKey="VEHICLE_CATEGORY_UPDATE"
+                            cancelPermissionKey="VEHICLE_CATEGORY_UPDATE"
+                            />
+    </ui:define>
+    <ui:define name="content">
+       
+        <div class="form-group">
+            <h:form id="object" prependId="false" onkeypress="if (event.keyCode === 13) { return false; }">
+                <p:messages id="messages" showDetail="true" autoUpdate="true" closable="true"/>
+
+                <table  class="table table-condensed">
+                    <tr>
+
+                        <td><p:outputLabel  value="Vehicle Type code" /></td>
+                        <td><p:inputText id="vehicle_type_code" value="#{vehicleCategoryEditController.instance.code}" required="true" 
+                                         disabled="true" requiredMessage="Vehicle Type code is mandatory"></p:inputText>
+                            <p:watermark for="vehicle_type_code" value="Enter Vehicle Type Code" id="vehicle_type_Code_watermark"/>
+                        </td>
+                    </tr>
+                   
+                    <tr>
+                        <td><p:outputLabel value="Vehicle Type Description : "/></td>
+                        <td><p:inputText id="vehicle_type_description" value="#{vehicleCategoryEditController.instance.description}"
+                                         requiredMessage="Description is mandatory"
+                                         required="true"/>
+                            <p:watermark for="vehicle_type_description" value="Enter Vehicle Description" id="vehicle_type_description_watermark"/>
+                        </td>
+
+                    </tr>
+                </table> 
+
+                <h:commandButton action="#{vehicleCategoryEditController.onSave()}" value="Edit" style="display: none;"  id="sdf" />
+
+            </h:form>
+        </div>
+    </ui:define>
+</ui:composition>
+

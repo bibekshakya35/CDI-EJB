@@ -1,0 +1,229 @@
+<?xml version='1.0' encoding='UTF-8' ?> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:prettyfaces="http://ocpsoft.com/prettyfaces"
+      >
+
+    <h:head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+        <link href="#{request.contextPath}/css/cssLayout.css"
+              rel="stylesheet" />
+        <link href="#{request.contextPath}/css/default.css"
+              rel="stylesheet" />
+        <link href="#{request.contextPath}/css/bootstrap-responsive.css"
+              rel="stylesheet" />
+        <link href="#{request.contextPath}/css/charisma-app.css"
+              rel="stylesheet" />
+        <link href="#{request.contextPath}/css/jquery-ui-1.8.21.custom.css"
+              rel="stylesheet" />
+        <link href='#{request.contextPath}/css/uniform.default.css'
+              rel='stylesheet' />
+        <link href='#{request.contextPath}/css/jquery.cleditor.css'
+              rel='stylesheet' />
+        <link href='#{request.contextPath}/css/jquery.iphone.toggle.css'
+              rel='stylesheet' />
+        <link href='#{request.contextPath}/css/opa-icons.css' rel='stylesheet' />
+        <link href='#{request.contextPath}/css/uploadify.css' rel='stylesheet' />
+        <h:outputScript name="jsf.js" library="javax.faces" />
+        <!-- The HTML5 shim, for IE6-8 support of HTML5 elements -->
+        <!--[if lt IE 9]>
+          <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+
+        <!-- The fav icon -->
+        <link rel="shortcut icon" href="#{request.contextPath}/img/favicon.ico" />
+
+
+        <!-- Latest compiled and minified CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous"/>
+
+        <!-- Optional theme -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous"/>
+
+        <!-- Latest compiled and minified JavaScript -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+
+        <ui:insert name="header">
+            <title>#{title}</title>
+        </ui:insert>
+
+    </h:head>
+
+    <h:body>
+
+        <div class="container-fluid">
+            <ui:insert name="top">
+                <nav class="navbar navbar-inverse">
+
+                    <div class="nav-header">
+                        <a href="#" class="navbar-brand">Bullock Payroll</a>
+                    </div>
+                    <ul class="nav navbar-nav">
+                        <li class="active"><a href="#">Home</a></li>
+                        <li><a href="pretty:">Employee</a></li> 
+                    </ul>
+
+                    <div class="navbar-right" style="margin:15px 30px -10px 0px; ">
+                        <ui:insert name="logout">
+                            <h:outputFormat id="for_user" rendered="#{identityBean.identity.login}">
+                                <div class="btn-group pull-right">
+                                    <div class="btn-group">
+                                        <button type="button" class="btn btn-primary dropdown-toggle" 
+                                                data-toggle="dropdown">#{identityBean.identity.userfullname}
+                                            <span class="caret"></span></button>
+                                        <ul class="dropdown-menu" role="menu">
+                                            <li><prettyfaces:link mappingId="history">Transaction History</prettyfaces:link></li>
+                                            <li><prettyfaces:link mappingId="recentTransaction">Recent Transaction</prettyfaces:link></li>
+                                            <li><prettyfaces:link mappingId="updateProfile">Update Profile</prettyfaces:link></li>
+                                            <li><prettyfaces:link mappingId="changePassword">Change Password</prettyfaces:link></li>
+                                        </ul>
+                                    </div>
+                                    <prettyfaces:link mappingId="logout" style="color: #FFF">
+                                        <button class="btn btn-primary" type="button"> Logout</button>
+                                    </prettyfaces:link>
+                                </div>
+                            </h:outputFormat>
+                        </ui:insert>
+                    </div>
+                </nav>
+            </ui:insert>
+        </div>
+        <div style="margin-top: 0px">
+            <div id="left">
+                <ui:insert name="left">
+                    <ul class="nav">
+                        <li><a href="#" data-toggle="offcanvas" class="visible-xs text-center"><i class="glyphicon glyphicon-chevron-right"></i></a></li>
+                    </ul>
+
+                    <ul class="nav hidden-xs" id="lg-menu">
+                        <li class="active">
+                            <a href="#" data-toggle="collapse" data-target="#sidemenu"><i class="glyphicon glyphicon-list-alt"></i>  Employee<i class="caret"></i></a>
+                            <ul id="sidemenu" class="collapse" style="list-style: none;">
+                                <li>
+                                    <a href="#{request.contextPath}/payroll/employee/addemployee" class="text-center" style="font-size: 12px">Add new Employee</a>
+                                </li>
+                                <li>
+                                    <h:link value="List" outcome="pretty:list_employee" class="text-center" style="font-size: 12px"/>
+                                </li>
+                            </ul>
+
+                        </li>
+                          <li>
+                            <a href="#" data-toggle="collapse" data-target="#sidemenusalary"><i class="glyphicon glyphicon-list-alt"></i>  Salary<i class="caret"></i></a>
+                            <ul id="sidemenusalary" class="collapse" style="list-style: none;">
+                                <li>
+                                    <h:link value="List Salary" outcome="pretty:salary_list"/>
+                                </li>
+                               
+                            </ul>
+
+                        </li>
+                      <li>
+                            <a href="#" data-toggle="collapse" data-target="#sidemenuevent"><i class="glyphicon glyphicon-list-alt"></i>  Event<i class="caret"></i></a>
+                            <ul id="sidemenuevent" class="collapse" style="list-style: none;">
+                                <li>
+                                    <h:link value="Add Event" outcome="pretty:add_event"/>
+                                </li>
+                               
+                            </ul>
+
+                        </li>
+                        <li><a href="#"><i class="glyphicon glyphicon-refresh"></i> Refresh</a></li>
+                    </ul>
+                    <ul class="list-unstyled hidden-xs" id="sidebar-footer">
+                        <li>
+                            <a href="#"><i class="glyphicon glyphicon-book"></i>Banking System</a>
+                        </li>
+                    </ul>
+
+
+
+                </ui:insert>
+            </div>
+            <div  class="left_content container-fluid" style="margin-top: -20px; background-color: transparent">
+                <ui:insert name="breadcrum">
+                    <ol class="breadcrumb" style="margin-top:-5px;padding:5px;font-size: 12px;height: 25px;">
+                        <li><i class="glyphicon glyphicon-home"></i><h:link value="  Home" outcome="pretty:home"/></li>
+                        <ui:insert name="breadcrum1">
+
+                        </ui:insert>
+                    </ol>
+                </ui:insert>
+                <ui:insert name="content">
+                    content
+                </ui:insert>
+            </div>
+        </div>
+        <div id="bottom">
+            <ui:insert name="bottom">Bottom</ui:insert>
+        </div>
+
+
+        <script src="#{request.contextPath}/js/jquery-1.7.2.min.js"></script>
+        <!-- jQuery UI -->
+        <script src="#{request.contextPath}/js/jquery-ui-1.8.21.custom.min.js"></script>
+        <!-- transition / effect library -->
+        <script src="#{request.contextPath}/js/bootstrap-transition.js"></script>
+        <!-- alert enhancer library -->
+        <script src="#{request.contextPath}/js/bootstrap-alert.js"></script>
+        <!-- modal / dialog library -->
+        <script src="#{request.contextPath}/js/bootstrap-modal.js"></script>
+        <!-- custom dropdown library -->
+        <script src="#{request.contextPath}/js/bootstrap-dropdown.js"></script>
+        <!-- scrolspy library -->
+        <script src="#{request.contextPath}/js/bootstrap-scrollspy.js"></script>
+        <!-- library for creating tabs -->
+        <script src="#{request.contextPath}/js/bootstrap-tab.js"></script>
+        <!-- library for advanced tooltip -->
+        <script src="#{request.contextPath}/js/bootstrap-tooltip.js"></script>
+        <!-- popover effect library -->
+        <script src="#{request.contextPath}/js/bootstrap-popover.js"></script>
+        <!-- button enhancer library -->
+        <script src="#{request.contextPath}/js/bootstrap-button.js"></script>
+        <!-- accordion library (optional, not used in demo) -->
+        <script src="#{request.contextPath}/js/bootstrap-collapse.js"></script>
+        <!-- carousel slideshow library (optional, not used in demo) -->
+        <script src="#{request.contextPath}/js/bootstrap-carousel.js"></script>
+        <!-- autocomplete library -->
+        <script src="#{request.contextPath}/js/bootstrap-typeahead.js"></script>
+        <!-- library for cookie management -->
+        <script src="#{request.contextPath}/js/jquery.cookie.js"></script>
+        <!-- calander plugin -->
+        <script src='#{request.contextPath}/js/fullcalendar.min.js'></script>
+        <!-- data table plugin -->
+        <script src='#{request.contextPath}/js/jquery.dataTables.min.js'></script>
+
+        <!-- select or dropdown enhancer -->
+        <script src="#{request.contextPath}/js/jquery.chosen.min.js"></script>
+        <!-- checkbox, radio, and file input styler -->
+        <script src="#{request.contextPath}/js/jquery.uniform.min.js"></script>
+        <!-- plugin for gallery image view -->
+        <script src="#{request.contextPath}/js/jquery.colorbox.min.js"></script>
+        <!-- rich text editor library -->
+        <script src="#{request.contextPath}/js/jquery.cleditor.min.js"></script>
+        <!-- notification plugin -->
+        <script src="#{request.contextPath}/js/jquery.noty.js"></script>
+        <!-- file manager library -->
+        <script src="#{request.contextPath}/js/jquery.elfinder.min.js"></script>
+        <!-- star rating plugin -->
+        <script src="#{request.contextPath}/js/jquery.raty.min.js"></script>
+        <!-- for iOS style toggle switch -->
+        <script src="#{request.contextPath}/js/jquery.iphone.toggle.js"></script>
+        <!-- autogrowing textarea plugin -->
+        <script src="#{request.contextPath}/js/jquery.autogrow-textarea.js"></script>
+        <!-- multiple file upload plugin -->
+        <script src="#{request.contextPath}/js/jquery.uploadify-3.1.min.js"></script>
+        <!-- history.js for cross-browser state change on ajax -->
+        <script src="#{request.contextPath}/js/jquery.history.js"></script>
+
+        <script src="#{request.contextPath}/js/jquery.maskedinput.min.js"></script>
+        <!-- application script for Charisma demo -->
+        <script src="#{request.contextPath}/js/charisma.js"></script>
+
+
+    </h:body>
+
+</html>

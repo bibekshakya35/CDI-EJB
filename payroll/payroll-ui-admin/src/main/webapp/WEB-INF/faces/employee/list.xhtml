@@ -1,0 +1,92 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                template="/WEB-INF/faces/template.xhtml"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                xmlns:jsf="http://xmlns.jcp.org/jsf" xmlns:p="http://primefaces.org/ui"
+                xmlns:prettyfaces="http://ocpsoft.com/prettyfaces">
+    <ui:param name="title" value="List of Employee"/>
+    <ui:define name="breadcrum1">
+        <li><h:link value="Employee Management" outcome="pretty:home"/></li>
+        <li><h:link value="Edit Employee Record" outcome="pretty:employee_edit"/></li>
+    </ui:define>
+    <ui:define name="content">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-10 col-md-10 span3">
+
+
+                    <p:messages id="messages" autoUpdate="true" closable="true" globalOnly="true" style="text-align: center;"/>
+                    <h:form id="form">
+                        <p:dataTable 
+                            class="panel-primary table table-condensed"
+                            var="employee" value="#{dtLazyView.lazyModel}" paginator="true" rows="10"
+                            emptyMessage="No Employee found with given criteria"
+                            paginatorTemplate="{RowsPerPageDropdown} {FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}"
+                            rowsPerPageTemplate="5,10,15" selectionMode="single" selection="#{dtLazyView.selectedEmployee}" widgetVar="employeeTable" lazy="true">
+                            <f:facet name="header">
+                                Employee Information
+                                <h:outputText value="Search all fields:" />
+                                <p:inputText id="globalFilter" onkeyup="PF('employeeTable').filter()" style="width:150px" placeholder="Enter keyword"/>
+                            </f:facet>
+                            <p:column headerText="Id">
+                                <h:outputText value="#{employee.employeeCode}" />
+                            </p:column>
+                            <p:column headerText="Employee Name">
+                                <h:outputText value="#{employee.employeeName}" />
+                            </p:column>
+                            <p:column headerText="Employee Mobile Number">
+                                <h:outputText value="#{employee.contact.mobileNumber}" />
+                            </p:column>
+                            <p:column headerText="Employee Role" >
+                                <h:outputText value="#{employee.detail.employeeRole}" />
+                            </p:column>
+                            <p:column headerText="Option">
+                                <h:commandButton action="#{employeeEditController.loadData(employee)}" value="Edit" class="btn btn-primary" style="margin-left: 40px;"> <f:ajax execute="@form"/></h:commandButton>
+
+                                <p:commandButton update=":form:employeeDetail" oncomplete="PF('employeeDialog').show()" icon="ui-icon-search"  title="View">
+                                    <f:setPropertyActionListener value="#{employee}" target="#{dtLazyView.selectedEmployee}" />
+                                </p:commandButton>
+                            </p:column>
+                        </p:dataTable>
+
+                        <p:dialog header="Employee Info" widgetVar="employeeDialog" modal="true" showEffect="fade" hideEffect="fade" resizable="false" styleClass="">
+                            <p:outputPanel id="employeeDetail" style="text-align:center;">
+                                <p:panelGrid  columns="2" rendered="#{not empty dtLazyView.selectedEmployee}" columnClasses="label,value">
+                                    <f:facet name="header">
+                                        <img src="../../imageshandler/#{dtLazyView.selectedEmployee.employeePicture}" class="img-responsive" style="width:200px;height: 200px;margin-left: 100px;border-radius: 50%"/>
+                                    </f:facet>
+
+                                    <h:outputText value="Name :" style="color: black"/>
+                                    <h:outputText value="#{dtLazyView.selectedEmployee.employeeName}" />
+
+                                    <h:outputText value="DOB :" style="color: black"/>
+                                    <h:outputText value="#{dtLazyView.selectedEmployee.employeeDob}" />
+
+                                    <h:outputText value="Gender :" style="color: black"/>
+                                    <h:outputText value="#{dtLazyView.selectedEmployee.sex}" style="color:#{dtSelectionView.selectedCar.color}"/>
+
+                                    <h:outputText value="Salary : " style="color: black" />
+                                    <h:outputText value="Rs : #{dtLazyView.selectedEmployee.salary.basicSalary}" />
+
+                                    <h:outputText value="Working date :" style="color: black"/>
+                                    <h:outputText value="#{dtLazyView.selectedEmployee.employeeDateOfCommencement}"/>
+                                    
+                                    <h:outputText value="Employee Job Specification :" style="color: black"/>
+                                    <h:inputTextarea value="#{dtLazyView.selectedEmployee.detail.jobSpecification}" readonly="true"/>
+                                    
+
+
+                                </p:panelGrid>
+                            </p:outputPanel>
+                        </p:dialog>
+
+
+                    </h:form>
+
+                </div>
+            </div>
+        </div>
+    </ui:define>
+</ui:composition>
+

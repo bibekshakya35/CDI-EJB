@@ -1,0 +1,81 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Jul 4, 2014, 12:10:32 PM
+    Author     : win 7
+*/
+
+.table-center {
+    text-align: center;
+    background-color: #fff;
+    width: 310px;
+    border-top-right-radius:0.5em;
+    border-top-left-radius:0.5em;
+    border-bottom-right-radius: 0.5em;
+    border-bottom-left-radius: 0.5em;
+    margin-left: 0px;
+}
+.login-header{
+    background-color: #66afe9;
+}
+
+input, textarea {
+    padding: 9px;
+    border: solid 5px #E5E5E5;
+    outline: 0;
+    font: normal 13px/100% Verdana, Tahoma, sans-serif;
+    width: 200px;
+    background: #FFFFFF;
+}
+.submit input {
+    width: 100px;;
+    padding: 9px;
+    background: #2a6496;
+    border: 0;
+    font-size: 14px;
+    color: #FFFFFF;
+    border-top-right-radius:0.5em;
+    border-top-left-radius:0.5em;
+    border-bottom-right-radius: 0.5em;
+    border-bottom-left-radius: 0.5em;
+
+}
+.submit input:active {
+    padding:10px 25px 2px 2px;
+    text-decoration:none;
+    vertical-align: top;
+    color:#00ff66;
+}
+input, textarea {
+    box-shadow: rgba(0,0,0, 0.1) 0px 0px 8px;
+    -moz-box-shadow: rgba(0,0,0, 0.1) 0px 0px 8px;
+    -webkit-box-shadow: rgba(0,0,0, 0.1) 0px 0px 8px;
+
+}
+input, textarea {
+    background: -webkit-gradient(linear, left top, left 25, from(#FFFFFF), color-stop(4%, #EEEEEE), to(#FFFFFF));
+    background: -moz-linear-gradient(top, #FFFFFF, #EEEEEE 1px, #FFFFFF 25px); 
+}
+
+.choose_workflow{
+    margin-top:0px; 
+    background-color:white;
+    border:1px solid black;
+}
+::-webkit-input-placeholder { /* WebKit browsers */
+    color:    #999;
+}
+:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+    color:    #999;
+    opacity:  1;
+}
+::-moz-placeholder { /* Mozilla Firefox 19+ */
+    color:    #999;
+    opacity:  1;
+}
+:-ms-input-placeholder { /* Internet Explorer 10+ */
+    color:    #999;
+}

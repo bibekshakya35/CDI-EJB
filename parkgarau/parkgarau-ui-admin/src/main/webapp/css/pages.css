@@ -1,0 +1,32 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Oct 16, 2016, 8:52:51 AM
+    Author     : bibek
+*/
+.ui-growl{
+    width:400px; 
+}
+
+.menu .ui-menubar {
+    text-align: center;background-color: #bce8f1;
+}
+
+.menu{
+text-align: center;
+}
+.ui-menu-list>li>a{
+    text-align: center;
+}
+.footer {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  padding: 1rem;
+  background-color: #efefef;
+  text-align: center;
+}

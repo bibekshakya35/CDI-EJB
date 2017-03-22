@@ -1,0 +1,118 @@
+.menusubnav{
+
+    /*    position:absolute;
+        left:8%;
+    */
+    position:absolute;
+    top:100px;
+    margin-top:15%; 
+    padding:0px;
+    width:14%; z-index:1;
+    min-width:140px; 
+    font: 12px "Lucida Grande", "Lucida Sans Unicode", Arial, Helvetica, Verdana, sans-serif;
+
+}
+.menusubnav > li{
+    height:3%;
+    margin-bottom:7.5%; 
+    height:14px;
+    margin-bottom:16px; 
+    list-style:none;
+}
+
+.menusubnav li > ul{
+    float:left;
+    margin:0; padding:0;
+    width:0;
+    visibility:hidden;
+
+}
+.menusubnav li:hover > ul{
+    visibility:visible;
+    list-style: none;
+}
+.menusubnav li:hover > ul > li > a {
+    width:150px; z-index:10;
+    display:block;
+    position:relative;
+    top:-30px; right:-120px;
+    visibility:visible;
+    background: #5f7884;
+    list-style: none;
+}
+
+.menusubnav li:hover > ul > li:hover >  a{
+    background:#0d8af2;
+
+} 
+.menusubnav  li:hover a{
+    color: floralwhite;
+    background: #0d8af2;
+
+}
+/*end of second level*/
+.menusubnav a{
+    margin:0; padding:0px; display:block;
+    border-bottom: 1px solid #e0e0e0;
+    font: 12px "Lucida Grande", "Lucida Sans Unicode", Arial, Helvetica, Verdana, sans-serif;
+    text-decoration:none; color: #333;
+
+
+}
+
+/* hide the third level */
+.menusubnav ul > li > ul{
+    margin:0; padding:0;
+    width:0; height:0;
+    visibility:hidden;
+
+}
+.menusubnav ul > li:hover > ul{
+    visibility:visible;
+} 
+.menusubnav ul > li:hover > ul{
+    z-index:12;
+    display:block;
+    position:relative;
+    top:-30px; right:-120px;
+    visibility:visible;
+}
+/* add background color */
+.menusubnav ul > li:hover > ul > li > a{
+    background:#5f7884;
+
+} 
+
+
+#button {
+    background-color:#fffffe;
+    font-size: 14px ;
+    color: #333;
+    padding:0px 3px 4px 3px;
+    text-decoration:none;
+    border-bottom: 1px solid #e0e0e0;
+   }
+
+#button:hover {
+    background-color:#5788af;
+    color: #ffffff;
+    /*  border:1px outset #2683cf;
+      color:#fcffdf;
+      padding:20px 3px 3px 3px;
+      margin:1px;
+      text-decoration:none;*/
+}
+#button:active {
+    background-color:#67b4cf;
+    border:1px inset #1d659f;
+    color:#e0ffaf;
+    padding:0px 3px 4px 3px;
+    text-decoration:none;
+    vertical-align: top;
+}
+
+.menu_hr{
+    margin-top:7%;
+    margin-bottom:0%; 
+}
+

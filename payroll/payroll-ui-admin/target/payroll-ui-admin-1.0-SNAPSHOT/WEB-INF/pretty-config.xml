@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pretty-config xmlns="http://ocpsoft.org/schema/rewrite-config-prettyfaces"
+               xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+               xsi:schemaLocation="http://ocpsoft.org/schema/rewrite-config-prettyfaces
+                      http://ocpsoft.org/xml/ns/prettyfaces/rewrite-config-prettyfaces.xsd">
+
+    
+    <url-mapping id="add_event">
+        <pattern value="/payroll/event/add"/>
+        <view-id value="/WEB-INF/faces/event/add.xhtml"/>
+    </url-mapping>
+        
+    <url-mapping id="list_event">
+        <pattern value="/payroll/event/list"/>
+        <view-id value="/WEB-INF/faces/event/list.xhtml"/>
+    </url-mapping>
+    
+    <url-mapping id="login">
+        <pattern value="/login"/>
+        <view-id value="/login.xhtml"/>
+    </url-mapping>
+
+    <url-mapping id="home">
+        <pattern value="/payroll/home"/>
+        <view-id value="/WEB-INF/faces/home/home.xhtml" />
+    </url-mapping>
+
+    <!--Start employee Mapping-->
+    <url-mapping id="add_employee">
+        <pattern value="/payroll/employee/addemployee"/>
+        <view-id value="/WEB-INF/faces/employee/addemployee.xhtml"/>
+    </url-mapping> 
+    <url-mapping id="list_employee">
+        <pattern value="/payroll/employee/list"/>
+        <view-id value="/WEB-INF/faces/employee/list.xhtml"/>
+    </url-mapping>
+        
+    <url-mapping id="employee_edit">
+        <pattern value="/payroll/employee/edit"/>
+        <view-id value="/WEB-INF/faces/employee/edit.xhtml"/>
+    </url-mapping>
+    <url-mapping id="login_register">
+        <pattern value="/login/register"/>
+        <view-id value="/WEB-INF/faces/login/register.xhtml"/>
+    </url-mapping>
+        
+    <!--Logout-->
+    <url-mapping>
+        <pattern value="/logout"/>
+        <view-id value="login.xhtml"/>
+        <action>#{logoutBean.doLogout}</action>
+    </url-mapping> 
+        
+        
+    <!--for salary List-->
+    <url-mapping id="salary_list">
+        <pattern value="/payroll/salary/list"/>
+        <view-id value="/WEB-INF/faces/salary/salary.xhtml"/>
+    </url-mapping>
+        
+        
+         
+</pretty-config>

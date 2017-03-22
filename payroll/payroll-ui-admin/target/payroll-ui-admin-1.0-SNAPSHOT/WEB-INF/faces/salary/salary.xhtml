@@ -1,0 +1,86 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                template="/WEB-INF/faces/template.xhtml"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:a="http://xmlns.jcp.org/jsf/passthrough">
+    <ui:param name="title" value="Salary"/>
+    <ui:define name="breadcrum1">
+        <li><h:link value="List Salary" outcome="pretty:salary_list"/></li>
+        
+    </ui:define>
+    <ui:define name="content">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-10 col-md-10 span3">
+
+
+                    <p:messages id="messages" autoUpdate="true" closable="true" globalOnly="true" style="text-align: center;"/>
+                    <h:form id="form">
+                        <p:growl id="msgs" showDetail="true" />
+
+                        <p:dataTable id="basicDT" var="salary" value="#{salaryListController.employeeList}">
+                            <f:facet name="header">
+                                Monthly Salary
+                            </f:facet>
+                            <p:column headerText="Employee Id">
+                                <h:outputText value="#{salary.employeeCode}" />
+                            </p:column>
+                            <p:column headerText="Employee Name">
+                                <h:outputText value="#{salary.employeeName}" />
+                            </p:column>
+                            <p:column headerText="Employee PF">
+                                <h:outputText value="#{salary.salaryTransaction.provident_fund}" />
+                            </p:column>
+                            <p:column headerText="TADA">
+                                <h:outputText value="#{salary.salaryTransaction.transportation_cost}" />
+                            </p:column>
+                            <p:column headerText="Other Allow.">
+                                <h:outputText value="#{salary.salaryTransaction.miscellaneous_allowance}" />
+                            </p:column>
+                            <p:column headerText="Insurance">
+                                <h:outputText value="#{salary.salaryTransaction.insurance_life}" />
+                            </p:column>
+                            <p:column headerText="Total Salary">
+                                <h:outputText value="#{salary.salaryTransaction.actualSalary}" />
+                            </p:column>
+                            
+                            <p:column style="width:32px;text-align: center">
+                                <p:commandButton update=":form:salaryDetail" oncomplete="PF('salatyDialog').show()" icon="ui-icon-search" title="View">
+                                    <f:setPropertyActionListener value="#{salary}" target="#{salaryListController.employee}" />
+                                </p:commandButton>
+                            </p:column>
+                        </p:dataTable>
+                        <p:dialog header="Salary Info" widgetVar="salaryDialog" modal="true" showEffect="fade" hideEffect="fade" resizable="false">
+                            <p:outputPanel id="salaryDetail" style="text-align:center;">
+                                <p:panelGrid  columns="2" rendered="#{not empty salaryListController.employee}" columnClasses="label,value">
+                                    <f:facet name="header">
+                                        <img src="../../imageshandler/#{salaryController.employee.employeePicture}" class="img-responsive" style="width:200px;height: 200px;margin-left: 100px;border-radius: 50%"/>
+                                    </f:facet>
+
+                                    <h:outputText value="Name" />
+                                    <h:outputText value="#{salaryListController.employee.employeeName}" />
+
+                                    <h:outputText value="Present Day" />
+                                    <h:outputText value="#{salaryListController.employee.attendance.presentDay}" />
+
+                                    <h:outputText value="Absent Day" />
+                                    <h:outputText value="#{salaryListController.employee.attendance.absentDay}" />
+
+                                    <h:outputText value="Basic Salary" />
+                                    <h:outputText value="Rs. #{salaryListController.employee.salary.basicSalary}" />
+                                </p:panelGrid>
+                            </p:outputPanel>
+                        </p:dialog>
+                    </h:form>
+                </div>
+            </div>
+        </div>
+    </ui:define>
+
+
+
+
+</ui:composition>
+

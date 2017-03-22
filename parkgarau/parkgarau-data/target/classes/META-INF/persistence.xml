@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.1"
+	xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
+	<persistence-unit name="PARK_GARAU_PU"
+		transaction-type="JTA">
+            <!-- connection setup to a database from server-->
+		<jta-data-source>java:/jboss/datasources/PARK_GARAU_DS</jta-data-source>
+		<properties>
+                    <!--automatically update  schema ddl to database,
+                    when Sessionfactory is  created.-->
+			<property name="hibernate.hbm2ddl.auto" value="update" />
+                        <!--set false if it moved to production-->
+			<property name="hibernate.show_sql" value="true" />
+                        <!--Format the generated SQL statement to make it more readable, but takes up more screen space.
+                        set false in production environment
+                        -->
+			<property name="hibernate.format_sql" value="true" />
+                        
+			<property name="hibernate.case.use_query_cache" value="false" />
+			<!-- 2nd level cache -->
+		</properties>
+	</persistence-unit>
+</persistence>

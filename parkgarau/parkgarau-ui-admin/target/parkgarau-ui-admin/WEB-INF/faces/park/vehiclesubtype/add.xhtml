@@ -1,0 +1,69 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                template="/WEB-INF/faces/template.xhtml"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:component="http://java.sun.com/jsf/composite/components/toolbar"
+                xmlns:pm="http://primefaces.org/mobile">
+    <ui:define name="title">Add Vehicle Sub Category</ui:define>
+    <ui:define name="toolbar">
+        <component:toolbar onSave="sdf"
+                           onCancel="pretty:vehiclesubtype_list"
+                           savePermissionKey="VEHICLE_SUBCATEGORY_ADD"
+                           cancelPermissionKey="VEHICLE_SUBCATEGORY_ADD"
+                           />
+    </ui:define>
+    <ui:define name="content">
+
+        <div class="form-group">
+            <h:form prependId="false" id="object" onkeypress="if (event.keyCode === 13) {
+                        return false;
+                    }">
+                <p:messages id="messages" showDetail="true" autoUpdate="true" closable="true"/>
+                <table  class="table table-condensed">
+                    <tr>
+
+                        <td><p:outputLabel  value="Vehicle Sub Type code" /></td>
+                        <td><p:inputText id="vehicle_subtype_code" value="#{vehicleSubCategoryAddController.instance.code}"  validator="codevalidator" required="true" 
+                                         requiredMessage="Vehicle Sub Type code is mandatory"></p:inputText>
+                            <p:message for="vehicle_subtype_code"/>
+                            <p:watermark for="vehicle_subtype_code" value="Enter Vehicle Sub Type Code" id="vehicle_subtype_Code_watermark"/>
+                        </td>
+
+                    </tr>
+                    <tr>
+                        <td><p:outputLabel  value="Vehicle Sub Type Name" /></td>
+                        <td><p:inputText id="vehicle_subtype_name" value="#{vehicleSubCategoryAddController.instance.name}" required="true" 
+                                         requiredMessage="Vehicle Sub Type name is mandatory"></p:inputText>
+                            <p:message for="vehicle_subtype_name"/>
+                            <p:watermark for="vehicle_subtype_name" value="Enter Sub Vehicle Type Name" id="vehicle_subtype_name_watermark"/>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td><p:outputLabel value="Vehicle Sub Type Description : "/></td>
+                        <td><p:inputTextarea id="vehicle_subtype_description" value="#{vehicleSubCategoryAddController.instance.description}"
+                                             requiredMessage="Description is mandatory"
+                                             required="true"/>
+                            <p:message for="vehicle_subtype_description"/> 
+                            <p:watermark for="vehicle_subtype_description" value="Enter Sub Vehicle Description" id="vehicle_subtype_description_watermark"/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><p:outputLabel value="vehicle Category : "/></td>
+                        <td>
+                            <p:selectOneMenu value="#{vehicleSubCategoryAddController.instance.vehicleCategoryCode}">
+                                <f:selectItems value="#{vehicleSubCategoryAddController.vehicleCategory}" var="vehicle" itemLabel="#{vehicle.name}" itemValue="#{vehicle.code}"/>
+                            </p:selectOneMenu>
+                        </td>
+                    </tr>
+                </table> 
+                <div class="form-group col-sm-offset-5">
+                    <p:commandButton id="sdf" style="display: none;" update="messages" action="#{vehicleSubCategoryAddController.onSave()}" class="btn btn-primary" value="Add Vehicle Type"/>
+                </div>
+            </h:form>
+        </div>
+    </ui:define>
+</ui:composition>
+

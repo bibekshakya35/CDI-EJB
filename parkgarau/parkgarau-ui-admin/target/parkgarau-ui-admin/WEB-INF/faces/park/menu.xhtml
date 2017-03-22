@@ -1,0 +1,25 @@
+<ui:composition
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:f="http://xmlns.jcp.org/jsf/core"
+    xmlns:jsf="http://xmlns.jcp.org/jsf"
+    xmlns:p="http://primefaces.org/ui"
+    xmlns:prettyfaces="http://ocpsoft.com/prettyfaces"
+    >
+    <div class="nav-collapse sidebar-nav">
+        <h:form>
+            <p:menu toggleable="true"  class="menu" style="width: 200px; background-color: #ffffff;">
+                <p:submenu label="User Management" style="text-align: center;margin-left: 0px;" icon="fa fa-user" >
+                    <p:menuitem value="  User" url="/park/user/list" rendered='#{identityBean.hasAccess("USER_VIEW")}' icon="fa fa-user" class="col-sm-offset-1"/>
+                    <p:menuitem value="  Role" url="/park/role/list" rendered='#{identityBean.hasAccess("ROLE_VIEW")}'  icon="fa fa-user-plus" class="col-sm-offset-1"/>
+                    <p:menuitem value="  Company" url="/park/company/list" rendered='#{identityBean.hasAccess("COMPANY_VIEW")}' icon="fa fa-building" class="col-sm-offset-1"/>
+                    <p:menuitem value="  Group" url="/park/group/list" icon="fa fa fa-users" rendered='#{identityBean.hasAccess("ROLE_VIEW")}' class="col-sm-offset-1"/>
+                    <p:menuitem value="  Vehicle Category" url="/park/vehicletype/list" icon="fa fa-taxi" rendered='#{identityBean.hasAccess("VEHICLE_CATEGORY_VIEW")}' class="col-sm-offset-1"/>
+                    <p:menuitem value="  VehicleSubCategory" url="/park/vehiclesubtype/list" icon="fa fa-bicycle" rendered='#{identityBean.hasAccess("VEHICLE_SUBCATEGORY_VIEW")}' class="col-sm-offset-1"/>
+                    <p:menuitem value="  Park Fee" url="/park/parkfee/list" icon="fa fa-money" rendered='#{identityBean.hasAccess("PARK_CHARGE_SETUP_VIEW")}' class="col-sm-offset-1"/>
+                </p:submenu>    
+            </p:menu>
+        </h:form>
+    </div>
+</ui:composition>

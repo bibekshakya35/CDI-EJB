@@ -1,0 +1,292 @@
+/* 
+    Document   : formstyle
+    Created on : Jun 11, 2014, 11:15:24 AM
+    Author     : win 7
+    Description:
+        Purpose of the stylesheet follows.
+*/
+/*this is for whole body*/
+
+
+.bodymain{
+    width:100%;
+    border:1px solid black;
+    min-width:1000px; 
+}
+.layout-body{
+    margin-top:30px;
+    padding: 2px;
+    /*border-style: solid;*/
+    alignment-adjust: auto;
+    text-align: center;
+    background-color:  #eee; 
+}
+
+.layout-body container{
+    margin-left: auto;
+    margin-right:auto;
+    width: 50em;
+    text-align: left;
+
+}
+
+/*start of the layout.jsp section*/
+.layout_table{
+    vertical-align:top;
+    padding: 2px;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: left;
+    height: auto;
+    /*overflow: auto;*/
+    /*border:1px solid black;*/
+}
+
+.td_header{
+    background-color: #3278b3;
+    width:100%;
+    min-width:1000px; 
+    position: fixed;
+    top:0%;
+    left:0%;
+    z-index:2;
+    overflow: auto;
+    height:13.5%;
+    min-height:90px; 
+
+    /*border:1px solid black;*/
+    /*height:100px;*/
+}
+
+.layout_body{
+
+    width:100%;
+    display:inline;
+    margin-top:3px;
+    height:100%;
+    margin: 0; padding: 0;
+    /*border:1px solid black;*/
+
+}
+
+.td_menu{
+
+    width:250px;
+    min-width: 200px;
+    float:left;
+    margin-top:0.2%; 
+    /*margin-top:9px;*/ 
+    height:73%;
+    min-height: 500px;
+    position:fixed;
+    left:1%;
+    top:80px;
+    z-index:1; 
+    padding-left:1%; 
+    /*border:1px solid black;*/
+}
+
+.td_body{
+    margin-top:0px; 
+    width:82%;
+    /*min-width:900px;*/
+    left:14.5%;
+    padding:0.5%; 
+    float:right;
+    overflow: visible;
+    position: absolute; 
+    /*margin-left:7%;*/
+    top:90px;
+    min-height:90%;
+    overflow-x: no-content;
+    margin-right:0px; 
+     
+    /*z-index:-2;*/
+    /*border:1px solid black;*/ 
+    background-color: #fffffe; 
+}
+
+.td_footer{
+    position:fixed;
+    top:600px;
+    left:1%;
+    /*width:85%;*/
+    height:2.5%; 
+    font-size:13px; 
+    text-align: justify;
+    color: #333;
+    border-top-right-radius:2em;
+    border-top-left-radius:2em;
+    border-bottom-right-radius: 2em;
+    border-bottom-left-radius: 2em;
+    z-index: 2;
+    /*border:1px solid black;*/
+}/*end of layout.jsp css*/
+
+
+
+/*start of login page section*/
+.login_image{
+    float:left;
+    position:absolute;
+    top:20%;
+
+}
+.login_image img{
+    width:100%;
+
+}
+.login_table{
+    float:right;
+    position:absolute;
+    left:65%;
+    top:20%;
+    width:30%;
+}
+
+/*end of login page section*/
+
+/*start of the tansit page*/
+.transit_table{
+    /*float:right;*/
+    position:absolute;
+    left:65%;
+    top:23%;
+    width:330px;
+
+}
+
+.td_footer_transit{
+    position:fixed;
+    top:92%;
+    left:40%;
+}
+
+.compose_app{
+    position:fixed;
+    top:120px;
+    left:2.4%;
+    z-index:2; 
+    width:10%;
+    min-width: 110px;
+    height:4%;
+    min-height: 23px;
+    background-color:#a90a1f;
+    color:white;
+    border-top-right-radius:0.5em;
+    border-top-left-radius:0.5em;
+    border-bottom-right-radius: 0.5em;
+    border-bottom-left-radius: 0.5em;
+    text-align:center;
+    padding-top:0.1%; 
+   
+}
+
+.compose_app a{
+    color:white;
+    font-size:110%; 
+}
+.compose_app a:hover{
+    color:white;
+    font-size:110%; 
+    text-decoration:none; 
+}
+.compose_app:hover{
+    background-color: #d40520;
+}
+.application_number{
+    position:fixed;
+    top:150px;
+    left:2.4%;
+    z-index:2; 
+    width:10%;
+    min-width:110px; 
+    height:4%;
+    min-height:23px; 
+    color:white;
+    text-align:center;
+    padding-top:0.1%; 
+    background-color: #a90a1f;
+    border-top-right-radius:0.5em;
+    border-top-left-radius:0.5em;
+    border-bottom-right-radius: 0.5em;
+    border-bottom-left-radius: 0.5em;
+}
+.application_number a{
+    color:white;
+    font-size:110%; 
+}
+
+.application_number a:hover{
+    color:white;
+    font-size:110%; 
+    text-decoration:none; 
+}
+
+.application_number:hover{
+    background-color: #d40520; 
+}
+
+/*end of the transit page*/
+
+/*start of the header.jsp css*/
+
+.header_page{
+    display:inline;
+}
+.header_img {
+    background-color:#006666; 
+    float:left;
+    width:13%;
+    margin-left:5%;
+    height:99%;
+    border:3px solid white; 
+    border-top-right-radius:100em;
+    border-top-left-radius:100em;
+    border-bottom-right-radius:100em;
+    border-bottom-left-radius:100em;
+
+    /*padding:0.5%;*/
+    /*border:1px solid white;*/
+    /*    border-top-right-radius:0.5em;
+        border-top-left-radius:0.5em;
+        border-bottom-right-radius: 0.5em;
+        border-bottom-left-radius: 0.5em;*/
+}
+
+.header_img img{
+    height:90%;
+    width:55%;
+    margin-top:2%; 
+    margin-left: 8%;
+    border-top-right-radius:100em;
+    border-top-left-radius:100em;
+    border-bottom-right-radius:100em;
+    border-bottom-left-radius:100em;
+
+}
+
+.header_title{
+    /*border:1px solid white;*/
+    float:left;
+    width:45%;
+    margin-left:1%;
+    height:99%;
+    padding-top:1.5%;
+    font-size:260%; 
+    font-family:serif;
+    color: #ffffff;
+}
+
+.header_username{
+    /*border:1px solid white;*/
+    float:left;
+    width:30.5%;
+    height:99%;
+    margin-left:1%;
+    padding-top:5%;
+    padding-left:5%;
+    font-size:100%;
+    color: #ffffff;
+}

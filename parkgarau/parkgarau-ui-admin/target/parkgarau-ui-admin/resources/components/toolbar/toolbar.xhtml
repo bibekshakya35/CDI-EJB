@@ -1,0 +1,45 @@
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:composite="http://java.sun.com/jsf/composite"
+                xmlns:f="http://java.sun.com/jsf/core">
+    <!-- INTERFACE -->
+    <composite:interface>
+        <composite:attribute name="onNew" />
+        <composite:attribute name="onCancel" />
+        <composite:attribute name="onSave" />
+
+        <composite:attribute name="newPermissionKey" />
+        <composite:attribute name="savePermissionKey"/>
+        <composite:attribute name="cancelPermissionKey"       
+                             />
+    </composite:interface>
+
+    <!-- IMPLEMENTATION -->
+    <composite:implementation>
+        <h:form>
+            <h:outputFormat value="">
+                <h:button title="Add New" outcome="#{cc.attrs.onNew}"
+                          image="#{resource['icons:new.png']}"
+                          style="width: 40px;height: 30px;margin-left: 20px;margin-top: 10px;"
+                          rendered="#{identityBean.hasAccess(cc.attrs.newPermissionKey)}"
+                          />
+                <h:commandButton title="Save" image="#{resource['icons:save.png']}"
+                                 onclick="document.getElementById('#{cc.attrs.onSave}').click();"
+                                 style="width: 40px;height: 30px;margin-left: 20px;margin-top: 10px;"
+                                 rendered="#{identityBean.hasAccess(cc.attrs.savePermissionKey)}">
+                    <f:ajax event="click" execute="@form"/>
+                </h:commandButton>
+                <h:button title="Cancel" outcome="#{cc.attrs.onCancel}"
+                          image="#{resource['icons:cancel.png']}"
+                          style="width: 40px;height: 30px;margin-left: 20px;margin-top: 10px;" 
+                          rendered="#{identityBean.hasAccess(cc.attrs.cancelPermissionKey)}"
+                          />
+
+            </h:outputFormat>
+
+        </h:form>
+    </composite:implementation>
+</ui:composition>

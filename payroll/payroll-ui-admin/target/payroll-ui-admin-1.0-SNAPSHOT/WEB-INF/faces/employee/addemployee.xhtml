@@ -1,0 +1,249 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                template="/WEB-INF/faces/template.xhtml"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
+                xmlns:p="http://primefaces.org/ui">
+
+    <ui:param name="title" value="Add A Bank Record"/>
+
+    <ui:define name="breadcrum1">
+        <li><h:link value="Bank Management" outcome="pretty:home"/></li>
+        <li><h:link outcome="pretty:add_employee" value="Add New Employee Record"/></li>
+    </ui:define>
+    <ui:define name="content">
+        <div class="container-fluid" style="margin-top: -40px; ">
+            <div class="row">
+                <div class="col-md-8 col-xs-8 col-md-offset-1 col-xs-offset-1">
+                    <div class="panel panel-default" style="background: 2px white">
+                        <div class="panel-heading">
+                            <strong class="lead text-primary" style="text-align: center;"><center>Add New Employees</center></strong>
+                        </div>
+
+                        <div class="panel-body" style="overflow-y:scroll;height: 500px">
+                            <h:form class="form-horizontal" role="form" enctype="multipart/form-data" prependId="false">
+                                <p:messages id="messages" showDetail="true" closable="true" globalOnly="true" autoUpdate="true" style="text-align: center"/>
+                                <fieldset>
+                                    <legend>Add A Employee</legend>
+
+
+                                    <!--Employee Name -->
+                                    <div class="form-group">
+                                        <h:outputText value=" Employee Name " class="col-sm-6 control-label" style="text-align: center;"/>
+                                        <div class="col-sm-6">
+                                            <h:inputText class="form-control" value="#{employeeAddController.employee.employeeName}" id="employeeName" a:placeholder="Employee Name" required="true"/>
+                                        </div>
+
+                                    </div>
+                                    <!--Employee Father Name -->
+                                    <div class="form-group">
+                                        <h:outputText value=" Employee Father Name " class="col-sm-6 control-label" style="text-align: center;"/>
+                                        <div class="col-sm-6">
+                                            <h:inputText class="form-control" value="#{employeeAddController.employee.fatherName}" id="employeeFatherName" a:placeholder="Employee Father Name" required="true"/>
+                                        </div>
+
+                                    </div>
+
+                                    <!--Employee Mother Name -->
+                                    <div class="form-group">
+                                        <h:outputText value=" Employee Mother Name " class="col-sm-6 control-label" style="text-align: center;"/>
+                                        <div class="col-sm-6">
+                                            <h:inputText class="form-control" value="#{employeeAddController.employee.motherName}" id="employeeMotherName" a:placeholder="Employee Mother Name" required="true"/>
+                                        </div>
+
+                                    </div>
+
+                                    <!--Employee Father Name -->
+                                    <div class="form-group">
+                                        <h:outputText value=" Employee Date of Birth " class="col-sm-6 control-label" style="text-align: center;"/>
+                                        <div class="col-sm-6">
+                                            <p:calendar value="#{employeeAddController.employee.employeeDob}" title="Date" id="employeeDOB" yearRange="-100" 
+
+                                                        navigator="true"/>
+                                        </div>
+
+                                    </div>
+
+                                    <!--Employee CitizenSHip Number -->
+                                    <div class="form-group">
+                                        <h:outputText value=" Employee Citizenship number " class="col-sm-6 control-label" style="text-align: center;"/>
+                                        <div class="col-sm-6">
+                                            <h:inputText class="form-control" value="#{employeeAddController.employee.employeeCitizenshipNumber}" id="employeeCitizenNumber" a:placeholder="Employee Citizenship Number" required="true"/>
+                                        </div>
+
+                                    </div>
+
+                                    <!--Employee CitizenSHip Nationality-->
+                                    <div class="form-group">
+                                        <h:outputText value=" Employee Nationality " class="col-sm-6 control-label" style="text-align: center;"/>
+                                        <div class="col-sm-6">
+                                            <h:inputText class="form-control" value="#{employeeAddController.employee.employeeNationality}" id="employeeNationality"
+                                                         a:placeholder="employee nationality" required="true"/>
+                                        </div>
+
+                                    </div>
+                                    <fieldset><legend>Contact</legend>
+                                        <div class="form-group">
+                                            <h:outputText value=" Employee Phone Number" class="col-sm-6 control-label" style="text-align: center;"/>
+                                            <div class="col-sm-6">
+                                                <h:inputText class="form-control" value="#{employeeAddController.contact.phoneNumber}" id="employeePhoneNumber"
+                                                             a:placeholder="employee Phone Number" required="true"/>
+                                            </div>
+
+                                        </div>
+                                        <div class="form-group">
+                                            <h:outputText value=" Employee Mobile Number" class="col-sm-6 control-label" style="text-align: center;"/>
+                                            <div class="col-sm-6">
+                                                <h:inputText class="form-control" value="#{employeeAddController.contact.mobileNumber}" id="employeeMobileNumber"
+                                                             a:placeholder="employee Mobile Number" required="true"/>
+                                            </div>
+
+                                        </div>
+
+                                    </fieldset>  
+
+
+                                    <fieldset>
+                                        <legend>Marital Status</legend>
+                                        <div class="form-group">
+                                            <h:outputText value=" Employee Maritial Status" class="col-sm-6 control-label" style="text-align: center;"/>
+                                            <div class="col-sm-6">
+                                                <p:selectOneRadio required="true" 
+                                                                  id="maritialStatus"
+
+                                                                  value="#{employeeAddController.employee.maritialStatus}" 
+                                                                  >
+                                                    <f:selectItems value="#{employeeAddController.maritialStatuses}"/>
+                                                </p:selectOneRadio>
+                                                <h:message for="maritialStatus"/>
+                                            </div>
+                                        </div>
+                                    </fieldset>
+
+                                    <fieldset>
+                                        <legend>Employee Gender</legend>
+                                        <div class="form-group">
+                                            <h:outputText value=" Employee Gender" class="col-sm-6 control-label" style="text-align: center;"/>
+                                            <div class="col-sm-6">
+
+                                                <p:selectOneRadio required="true" 
+                                                                  value="#{employeeAddController.employee.sex}"
+                                                                  id="genders">
+                                                    <f:selectItems value="#{employeeAddController.genders}"/>
+                                                </p:selectOneRadio>
+                                                <h:message for="genders"/>
+
+
+                                            </div>
+                                        </div>
+                                    </fieldset>
+
+                                    <fieldset>
+                                        <legend>Employee Job Details</legend>
+                                        <div class="form-group">
+                                            <h:outputText value=" Employee Role " class="col-sm-6 control-label" style="text-align: center"/>
+                                            <div class="col-sm-6">
+                                                <h:selectOneMenu required="true" 
+                                                                 value="#{employeeAddController.detail.employeeRole}" 
+                                                                 id="employeeRole"
+                                                                 class="form-control">
+                                                    <f:selectItems value="#{employeeAddController.employeeRoles}"/>
+                                                </h:selectOneMenu>
+                                                <h:message for="employeeRole"/>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <h:outputText value=" Employee Shift" class="col-sm-6 control-label" style="text-align: center;"/>
+                                            <div class="col-sm-6">
+                                                <h:selectOneMenu required="true" value="#{employeeAddController.detail.shift}" class="form-control">
+                                                    <f:selectItems value="#{employeeAddController.shifts}"/>
+                                                </h:selectOneMenu>
+                                            </div>
+
+                                        </div>
+                                        <div class="form-group">
+                                            <h:outputText value="Employee Department" class="col-sm-6 control-label" style="text-align: center"/>
+                                            <div class="col-sm-6">
+                                                <h:selectOneMenu  required="true" value="#{employeeAddController.detail.department}" class="form-control">
+                                                    <f:selectItems value="#{employeeAddController.departments}"/>
+                                                </h:selectOneMenu> 
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <h:outputText value="Employee Classification" class="col-sm-6 control-label" style="text-align: center"/>
+                                            <div class="col-sm-6">
+                                                <h:selectOneMenu  required="true" value="#{employeeAddController.detail.employeeClassification}" class="form-control">
+                                                    <f:selectItems value="#{employeeAddController.employeeClassification}"/>
+                                                </h:selectOneMenu> 
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <h:outputText value=" Employee Position " class="col-sm-6 control-label" style="text-align: center"/>
+                                            <div class="col-sm-6"> 
+                                                <h:selectOneMenu required="true" value="#{employeeAddController.employee.jobPosition}" class="form-control">
+                                                    <f:selectItems value="#{employeeAddController.positions}"/>
+                                                </h:selectOneMenu>
+                                            </div>
+                                        </div>
+
+
+                                        <div class="form-group">
+                                            <h:outputText class="col-sm-6 control-label" value="Employee Job Specification" style="text-align: center"/>
+                                            <div class="col-sm-6">
+                                                <h:inputTextarea value="#{employeeAddController.detail.jobSpecification}"/>
+                                            </div>
+                                        </div>
+                                    </fieldset>
+                                    <fieldset>
+                                        <legend>Employee Salary</legend>
+                                        <div class="form-group">
+                                            <h:outputText class="col-sm-6 control-label" value="Employee Salary" style="text-align: center"/>
+                                            <div class="col-sm-6">
+                                                <h:inputText value="#{employeeAddController.salary.basicSalary}"/>
+                                            </div>
+                                        </div>
+                                    </fieldset>
+                                    <fieldset>
+                                        <legend>Date Of Commencement</legend>
+                                        <div class="form-group">
+                                            <h:outputText value=" Employee Date of Commencement " class="col-sm-6 control-label" style="text-align:center"/>
+                                            <div class="col-sm-6">
+                                                <p:calendar value="#{employeeAddController.employee.employeeDateOfCommencement}" title="Date"
+                                                            yearRange="-100"
+                                                            navigator="true"
+
+                                                            />
+                                            </div>
+                                        </div>
+                                    </fieldset>   
+
+                                    <div class="form-group">
+                                        <h:outputText value=" Employee Picture" class="col-sm-6 control-label" style="text-align: center;"/>
+                                        <div class="col-sm-6">
+                                            <h:inputFile value="#{employeeAddController.filePart}" >
+                                                <f:ajax listener="#{employeeAddController.upload()}" />
+
+                                            </h:inputFile>
+
+
+                                        </div>
+                                    </div>
+                                    <div class="form-group last" style="padding-bottom: 20px;"> 
+                                        <div class="col-sm-6" style="background-position: center;"><h:commandButton styleClass="btn btn-primary" style="margin-left: 250px;" value="Save" action="#{employeeAddController.addEmployee()}" type="submit">
+                                                <!--                                                <f:validator id="imageValidator"/>-->
+                                                <f:ajax execute="@form"/>
+                                            </h:commandButton></div> 
+                                    </div>
+                                </fieldset>
+                            </h:form>
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </ui:define>
+
+</ui:composition>

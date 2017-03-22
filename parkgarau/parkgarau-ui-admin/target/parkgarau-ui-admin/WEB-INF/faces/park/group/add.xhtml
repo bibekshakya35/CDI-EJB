@@ -1,0 +1,91 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                template="/WEB-INF/faces/template.xhtml"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:component="http://java.sun.com/jsf/composite/components/toolbar"
+                xmlns:pm="http://primefaces.org/mobile">
+    <ui:define name="title">Add Group Permission</ui:define>
+    <ui:define name="toolbar">
+        <component:toolbar onSave="sdf"
+                           onCancel="pretty:group_list"
+                           savePermissionKey="ROLE_ADD"
+                           cancelPermissionKey="ROLE_ADD"
+                           />
+    </ui:define>
+    <ui:define name="content">
+        <div class="form-group">
+
+            <h:form id="frm_permission_group" prependId="false"
+                    onkeypress="if (event.keyCode === 13) {
+                                return false;
+                            }"
+                    >
+                <p:growl id="messages" showDetail="true" autoUpdate="true"  />
+                <h:commandButton action="#{groupPermissionAddController.onSave}" id="sdf" style="display: none;" 
+                                 
+                                 value="Add Group"/>
+                <table  class="table table-condensed">
+                    <tr>
+                        <td><p:outputLabel  value="Group Code" /></td>
+                        <td><p:inputText id="group_code" value="#{groupPermissionAddController.instance.code}"  validator="codevalidator" required="true"/>
+                            <p:watermark for="group_code" value="Enter Group Permission Code" id="role_watermark"/></td>
+
+                    </tr>
+                    <tr>
+
+                        <td><p:outputLabel value="Group Permission Description"/></td>
+                        <td><p:inputTextarea id="group_permission_description" value="#{groupPermissionAddController.instance.description}"  required="true"/></td>
+
+                    </tr>
+                    <tr>
+                        <td><p:outputLabel value="User Types"/></td>
+                        <td><h:selectManyCheckbox value="#{groupPermissionAddController.userType}">
+                                <f:selectItems value="#{groupPermissionAddController.userTypes}"/>
+                            </h:selectManyCheckbox></td>
+                    </tr>
+                </table>
+                <p:dataTable id="dt_permissions" var="data" value="#{groupPermissionAddController.permissions}" styleClass="table table-hover">
+                    <p:column headerText="Code">
+                        <p:outputLabel value="#{data.code}"/>
+                    </p:column>
+                    <p:column headerText="Description">
+                        <p:outputLabel value="#{data.description}"/>
+                    </p:column>
+                    <p:column headerText="Option">
+
+                        <p:commandButton value="Remove"
+                                         action="#{groupPermissionAddController.removeData(data)}"
+                                         update=":dt_permissions" ajax="true"/>
+                    </p:column>
+                </p:dataTable>                
+            </h:form>
+            <h:form id="frm_permissions" prependId="false">
+                <table>
+                    <tr>
+                        <pm:field>
+                            <td><p:outputLabel value="Permisson code" for="permission_code" /></td>
+                            <td>
+                                <p:inputText value="#{groupPermissionAddController.permission.code}" 
+                                             id="permission_code"
+                                              validator="codevalidator"
+                                             />
+                                <p:watermark for="permission_code" value="Enter Permission Code" />
+                            </td>
+                            <td><p:outputLabel value="Permission Description" for="permission_description"/></td>
+                            <td>
+                                <p:inputTextarea value="#{groupPermissionAddController.permission.description}" id="permission_description" />
+                            </td>
+                            <td>                            
+                                <h:commandButton value="Add Permission" type="button">
+                                    <f:ajax listener="#{groupPermissionAddController.addList}" render=":dt_permissions :frm_permissions" execute="permission_code permission_description"/>
+                                </h:commandButton>
+                            </td>
+                        </pm:field>
+                    </tr>
+                </table>
+            </h:form>
+        </div>
+    </ui:define>
+</ui:composition>

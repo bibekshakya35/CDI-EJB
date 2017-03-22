@@ -1,0 +1,90 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                template="/WEB-INF/faces/template.xhtml"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:component="http://java.sun.com/jsf/composite/components/toolbar"
+                xmlns:pm="http://primefaces.org/mobile">
+    <ui:define name="title">Add Role</ui:define>
+    <ui:define name="toolbar">
+        <component:toolbar onSave="sdf"
+                           onCancel="pretty:role_list"
+                           savePermissionKey="ROLE_ADD"
+                           cancelPermissionKey="ROLE_ADD"
+                           />
+    </ui:define>
+    <ui:define name="content">
+
+        <div class="form-group">
+            <h:form id="object" onkeypress="if (event.keyCode === 13) {
+                        return false;
+                    }"
+                    prependId="false"                
+                    >
+                <p:messages id="messages" showDetail="true" autoUpdate="true" closable="true"/>
+                <table  class="table table-condensed">
+                    <tr>
+                        <pm:field>
+                            <td><p:outputLabel for="role_code" value="Role Code" /></td>
+                            <td><p:inputText id="role_code" value="#{roleAddController.instance.code}"  validator="codevalidator" required="true"/>
+                                <p:watermark for="role_code" value="Enter Role Code" id="role_watermark"/></td>
+                        </pm:field>
+                    </tr>
+                    <tr>
+
+                        <pm:field>
+                            <td><p:outputLabel for="role_description" value="Role Description"/></td>
+                            <td><p:inputTextarea id="role_description" value="#{roleAddController.instance.description}"  required="true"/></td>
+                        </pm:field>
+                    </tr>
+                    <tr>
+
+                        <pm:field>
+                            <td><p:outputLabel for="company" value="Company"/></td>
+                            <td>
+                                <p:selectOneMenu value="#{roleAddController.companyCode}" id="company">
+                                    <f:selectItems value="#{roleAddController.companies}" var="company" itemValue="#{company.code}" itemLabel="#{company.code}"/>
+                                </p:selectOneMenu>
+                            </td>
+                        </pm:field>
+                    </tr>
+
+                    <tr><td></td><td></td></tr>
+
+                </table>
+                <p:panel closable="true" style="width: 300px;margin-left: 250px;">
+                    <f:facet name="header">
+                        <h:outputText value="Permissions" />
+                    </f:facet>
+                    <p:separator/>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   
+                    <ui:repeat var="group" value="#{roleAddController.entries}">
+                        <div style="margin-left: 70px;">
+                            <p:outputLabel value="#{group.key}" escape="false" style="font-weight: bold; text-decoration: underline;"/>
+                            <br></br>
+                        </div>
+                        <ui:repeat var="groups" value="#{group.value}">
+                            <div style="margin-left: 30px;">
+                                <h:selectBooleanCheckbox 
+                                    value="#{roleAddController.selectedIds[groups.code]}">  
+                                    <f:ajax listener="#{roleAddController.loadSelectedItem(groups.code)}"
+                                            execute="@form"
+                                            render="role_code" />
+                                </h:selectBooleanCheckbox>
+                                <p:outputLabel value="#{groups.code}"/>
+                            </div>
+                        </ui:repeat>      
+
+                    </ui:repeat>
+
+
+                    <div class="well-sm"><p:commandButton id="sdf" style="display: none;" action="#{roleAddController.onSave()}" update="messages" value="Submit" styleClass="center-block btn btn-primary"/></div>
+                </p:panel>
+
+
+            </h:form>
+
+        </div>
+    </ui:define>
+</ui:composition>
+

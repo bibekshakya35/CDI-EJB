@@ -1,0 +1,48 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                template="/WEB-INF/faces/template.xhtml"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:prettyfaces="http://ocpsoft.com/prettyfaces"
+                xmlns:component="http://java.sun.com/jsf/composite/components/toolbar"
+                xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <ui:define name="title">List of Group Permission</ui:define>
+    <ui:define name="toolbar">
+        <component:toolbar onSave="sdf"
+                           onNew="pretty:group_add" 
+                           newPermissionKey="ROLE_ADD"
+
+                           />
+    </ui:define>
+    <ui:define name="content">
+        <div class="row">
+            <p:growl id="messages"  showDetail="true" severity="info" />
+            <div class="col-sm-12 col-xs-12 col-md-12 col-lg-12">
+                <h:form>
+                    <p:dataTable var="group" value="#{groupPermissionListController.list}">
+
+                        <p:column headerText="Group Code : ">
+                            <h:outputText value="#{group.code}" />
+                        </p:column>
+                        <p:column headerText="Description : ">
+                            <h:outputText value="#{group.description}" />
+                        </p:column>
+                        <p:column headerText="option">
+                            <prettyfaces:link mappingId="group_edit" title="View" style="margin-left: 40px;">
+                                <f:param value="#{group.code}" />
+                                <span class="btn btn-primary"><i class="fa fa-edit"></i> Edit</span>
+                            </prettyfaces:link>
+                        </p:column>
+                    </p:dataTable>
+
+
+                </h:form>
+            </div>
+
+        </div>
+
+
+    </ui:define>
+</ui:composition>
+
+

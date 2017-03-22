@@ -1,0 +1,22 @@
+<ui:composition
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    template="/WEB-INF/faces/template.xhtml"
+
+    xmlns:p="http://primefaces.org/ui"
+    xmlns:h="http://xmlns.jcp.org/jsf/html">
+    <ui:define name="title">Home</ui:define>
+
+    <ui:define name="content">
+
+        <p:messages id="messages"  showDetail="true" severity="info" closable="true" />
+        <h:outputFormat rendered="#{loginController.showPage}">
+            <ui:include src="admin.xhtml"/>
+        </h:outputFormat>
+        <h:outputFormat rendered="#{loginController.companyPage}">
+            <ui:include src="company.xhtml"/>
+        </h:outputFormat>
+        
+    </ui:define>
+</ui:composition>
+

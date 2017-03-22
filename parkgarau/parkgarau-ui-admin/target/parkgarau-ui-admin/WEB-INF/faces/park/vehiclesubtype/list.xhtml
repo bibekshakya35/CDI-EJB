@@ -1,0 +1,52 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                template="/WEB-INF/faces/template.xhtml"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:prettyfaces="http://ocpsoft.com/prettyfaces"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                xmlns:component="http://java.sun.com/jsf/composite/components/toolbar"
+                >
+    <ui:define name="title">List of Vehicle Sub Category</ui:define>
+    <ui:define name="toolbar">
+        <component:toolbar onSave="sdf"
+                           onNew="pretty:vehiclesubtype_add" 
+                           newPermissionKey="VEHICLE_SUBCATEGORY_ADD"
+                          
+                           />
+    </ui:define>
+    <ui:define name="content">
+        <p:growl id="messages"  showDetail="true" severity="info"  />
+        <div class="row">
+            <div class="col-sm-12 col-lg-12 col-md-12 col-xs-12">
+                <h:form id="form">
+                    <p:dataTable var="vehicle" value="#{vehicleSubCategoryListController.list}">
+
+
+                        <f:facet name="header">
+                            List of Vehicle Type
+                        </f:facet>
+                        <p:column headerText="code">
+                            <h:outputText value="#{vehicle.code}" />
+                        </p:column>
+                        
+                        <p:column headerText="Vehicle Decription">
+                            <h:outputText value="#{vehicle.description}" />
+                        </p:column>
+                        <p:column headerText="option">
+                            <prettyfaces:link mappingId="vehiclesubtype_edit" title="View" style="margin-left: 40px;">
+                                <f:param value="#{vehicle.code}" />
+                                <span class="btn btn-primary"><i class="fa fa-edit"></i> Edit</span>
+                            </prettyfaces:link>
+                        </p:column>
+       
+                    </p:dataTable>
+                </h:form>
+            </div>
+
+
+        </div>
+    </ui:define>
+</ui:composition>
+
+

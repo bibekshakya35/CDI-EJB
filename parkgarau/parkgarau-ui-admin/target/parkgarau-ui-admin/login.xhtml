@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Park Garau Login Page</title>
+        <meta charset="utf-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <link href="css/bootstrap.css" rel="stylesheet"/>
+        <link rel="shortcut icon" href="img/favicon.ico" />
+        <link href="css/login.css" rel="stylesheet"/>
+    </h:head>
+    <h:body>
+        <div class = "container">
+            <div class="wrapper">
+                <h:form class="form-signin" >  
+                    <p:messages id="messages" showDetail="true" autoUpdate="true" closable="true"/>
+                    <img src="img/parkgarau.png" class="col-sm-offset-3 img-circle img-responsive" width="150px" height="150px"/>
+                    <h3 style="text-align: center;">REGISTERED USER</h3>
+                    <p style="margin-left: 25px;">If you have an account with us, please log in.</p>
+                    <hr class="colorgraph"></hr>
+                    <p:inputText id="email_id" type="text" class="form-control" value="#{loginController.parkGarauCredential.userName}"  placeholder="Username"/>
+                    <br></br>
+                    <p:password  class="form-control" placeholder="Password" value="#{loginController.parkGarauCredential.password}" />     		  
+                    <p:commandButton class="btn btn-lg btn-primary btn-block" update="messages" action="#{loginController.doLogin()}" value="Login">
+                    </p:commandButton> 
+                    <p><label class="control-label label-info" style="margin-top: 10px;margin-left: 30px;">Powered By:   <a href="http://drose.com.np" target="_blank">D'Rose Technologies</a> 2016 </label></p>
+                </h:form>			
+            </div>
+
+        </div>
+
+    </h:body>
+</html>
+

@@ -1,0 +1,146 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                template="/WEB-INF/faces/template.xhtml"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:component="http://java.sun.com/jsf/composite/components/toolbar"
+                xmlns:pm="http://primefaces.org/mobile">
+    <ui:define name="title">Edit USER</ui:define>
+    <ui:define name="toolbar">
+        <component:toolbar  onSave="sdf" onCancel="pretty:user_list"
+                            savePermissionKey="USER_UPDATE"
+                            cancelPermissionKey="USER_UPDATE"
+                            />
+    </ui:define>
+    <ui:define name="content">
+        <div class="form-group">
+            <h:form id="object" prependId="false" 
+                    onkeypress="if (event.keyCode === 13) {
+                                return false;
+                            }"
+                    >
+                <p:messages id="messages" showDetail="true" autoUpdate="true" closable="true"/>
+                <table  class="table table-condensed">
+                    <tr>
+                        <pm:field>
+                            <td><p:outputLabel  value="Username " /></td>
+                            <td><p:inputText id="user_name" value="#{userEditController.instance.userName}" disabled="true" required="true" 
+                                             requiredMessage="Enter the username" 
+                                             validatorMessage="Invalid username"/> 
+                                
+                                <p:watermark for="user_name" value="Enter UserNAME" id="username_watermark"/>
+                            </td>
+                        </pm:field>
+                    </tr>
+                    <tr>
+                        <pm:field>
+                            <td><p:outputLabel  value="Email Id" /></td>
+                            <td><p:inputText id="user_email_Id" value="#{userEditController.instance.userProfile.emailId}" required="true" 
+                                             requiredMessage="Enter the email address" 
+                                             validatorMessage="Invalid Email Format"> 
+                                    <f:validateRegex
+                                        pattern="^[_A-Za-z0-9-\+]+(\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\.[A-Za-z0-9]+)*(\.[A-Za-z]{2,})$" />
+                                </p:inputText>
+                                <p:watermark for="user_email_Id" value="Enter Email address=" id="email_id_watermark"/>
+
+                            </td>
+                        </pm:field>
+                    </tr>
+                    <tr>
+                        <pm:field>
+                            <td><p:outputLabel value="Password"/></td>
+                            <td><p:password id="user_password" value="#{userEditController.instance.userPassword}"  required="true"/>
+                                <p:watermark for="user_password" value="Password will be old If no Edit Done!" id="password_watermark"/>
+                            </td>
+                        </pm:field>
+
+                    </tr>
+                    <tr>
+                        <pm:field>
+                            <td><p:outputLabel value="Confirm Password"/></td>
+                            <td><p:password id="user_confirm_password" value="#{userEditController.confirmpassword}"  required="true"/>
+                                <p:watermark for="user_confirm_password" value="Password will be old If no Edit Done!d" id="confirm_password_watermark"/>
+                            </td>
+                        </pm:field>
+
+                    </tr>
+                    <tr>
+                        <pm:field>
+                            <td><p:outputLabel  value="Mobile Number" /></td>
+                            <td><p:inputText id="mobile_number" value="#{userEditController.instance.userProfile.mobileNumber}" required="true" 
+                                             requiredMessage="Enter the mobile number" 
+                                             converterMessage="Please enter digits only."
+                                             validatorMessage="Please enter 10 digits."
+                                             maxlength="10"> 
+                                    <f:validateLength minimum="10" maximum="10" />
+                                </p:inputText>
+                                <p:watermark for="mobile_number" value="Mobile Number" id="mobile_number_watermark"/>
+                                <p:message for="mobile_number"/>
+
+                            </td>
+                        </pm:field>
+                    </tr>
+                    <tr>
+                        <pm:field>
+                            <td><p:outputLabel  value="Land Line Number" /></td>
+                            <td><p:inputText id="landline_number" value="#{userEditController.instance.userProfile.landLineNumber}" required="true" 
+                                             requiredMessage="Enter the Land Line number" 
+                                             converterMessage="Please enter digits only."
+                                             validatorMessage="Please enter 8 digits."
+                                             maxlength="9"> 
+                                    <f:validateLength minimum="9" maximum="9" />
+                                </p:inputText>
+                                <p:watermark for="landline_number" value="Landline Number" id="landline_number_watermark"/>
+                                <p:message for="landline_number"/>
+
+                            </td>
+                        </pm:field>
+                    </tr>
+                    <tr>
+                        <pm:field>
+                            <td><p:outputLabel value="User Role" for="user_role" /></td>
+                            <td>
+                                <h:selectOneMenu value="#{userEditController.roleCode}" id="user_role">
+                                    <f:selectItems value="#{userEditController.roles}" var="rol" itemLabel="#{rol.code}" itemValue="#{rol.code}"/>
+                                </h:selectOneMenu>
+                                <p:watermark for="user_role" value="Enter User Role" />
+                            </td>
+                        </pm:field>
+                    </tr>
+                    <tr>
+                        <pm:field>
+                            <td><p:outputLabel value="User Type" for="user_types" /></td>
+                            <td>
+                                <h:selectOneMenu value="#{userEditController.instance.userType}" id="user_types" required="true">
+                                    <f:selectItems value="#{userEditController.types}"/>
+                                </h:selectOneMenu>
+                            </td>
+                        </pm:field>
+                    </tr>
+
+                    <tr>
+                        <pm:field>
+                            <td><p:outputLabel value="Full Name" for="user_name" /></td>
+                            <td>
+                                <p:inputText value="#{userEditController.instance.userProfile.fullname}" 
+                                             id="user_full_name"/>
+                                <p:watermark for="user_full_name" value="Enter User Name" />
+                            </td>
+                        </pm:field>
+                    </tr>
+                    <tr>
+                        <pm:field>
+                            <td><p:outputLabel value="User Details Info" for="user_info" /></td>
+                            <td>
+                                <p:inputText value="#{userEditController.instance.userProfile.basicInfo}" 
+                                             id="user_info"/>
+                            </td>
+                        </pm:field>
+                    </tr>
+                    <h:commandButton id="sdf" style="display: none;" action="#{userEditController.onSave}" value="Add User"/>
+                </table> 
+            </h:form>
+        </div>
+    </ui:define>
+</ui:composition>

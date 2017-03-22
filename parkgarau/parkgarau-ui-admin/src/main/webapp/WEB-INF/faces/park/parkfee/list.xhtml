@@ -1,0 +1,52 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                template="/WEB-INF/faces/template.xhtml"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:component="http://java.sun.com/jsf/composite/components/toolbar"
+                xmlns:prettyfaces="http://ocpsoft.com/prettyfaces"
+                >
+    <ui:define name="title">List of Park Fee</ui:define>
+    <ui:define name="toolbar">
+        <component:toolbar onSave="sdf"
+                           onNew="pretty:parkfee_add" 
+                           newPermissionKey="PARK_CHARGE_ADD"
+                           />
+    </ui:define>
+    <ui:define name="content">
+        <p:growl id="messages"  showDetail="true" severity="info"  />
+        <div class="row">
+            <div class="col-sm-12 col-lg-12 col-md-12 col-xs-12">
+                <h:form id="form">
+                    <p:dataTable var="p" value="#{parkingChargeListController.list}">
+                        <f:facet name="header">
+                            List of Park Fee
+                        </f:facet>
+                        <p:column headerText="code">
+                            <h:outputText value="#{p.id}" />
+                        </p:column>
+                        <p:column headerText="Vehicle Sub Category Code">
+                            <h:outputText value="#{p.vehicleSubCategoryCode}" />
+                        </p:column>
+                        <p:column headerText="Parking Charge Setup COde">
+                            <h:outputText value="#{p.parkingChargeSetupCode}" />
+                        </p:column>
+
+                        <p:column headerText="option">
+                            <prettyfaces:link mappingId="parkfee_edit" title="View">
+                                <f:param value="#{p.id}" />
+                                <span class="btn btn-primary"><i class="fa fa-edit"></i> Edit</span>
+                            </prettyfaces:link>
+                        </p:column>
+
+                    </p:dataTable>
+                </h:form>
+            </div>
+
+
+        </div>
+    </ui:define>
+</ui:composition>
+
+

@@ -1,0 +1,71 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                template="/WEB-INF/faces/template.xhtml"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:component="http://java.sun.com/jsf/composite/components/toolbar"
+                xmlns:pm="http://primefaces.org/mobile">
+    <ui:define name="title">Edit VEHICLE SUB CATEGORY</ui:define>
+    <ui:define name="toolbar">
+        <component:toolbar  onSave="sdf" onCancel="pretty:vehiclesubtype_list"
+                            savePermissionKey="VEHICLE_SUBCATEGORY_UPDATE"
+                            cancelPermissionKey="VEHICLE_SUBCATEGORY_UPDATE"
+                            />
+    </ui:define>
+    <ui:define name="content">
+        <div class="modal">
+            <p:growl id="error" showDetail="true"  severity="warn"/>
+        </div>
+        <div class="form-group">
+            <h:form id="object" prependId="false" 
+                    onkeypress="if (event.keyCode === 13) {
+                                return false;
+                            }"
+                    > 
+
+                <table  class="table table-condensed">
+                    <tr>
+
+                        <td><p:outputLabel  value="Vehicle Sub Type code" /></td>
+                        <td><p:inputText id="vehicle_subtype_code" value="#{vehicleSubCategoryEditController.instance.code}" disabled="true" required="true" 
+                                         requiredMessage="Vehicle Sub Type code is mandatory"></p:inputText>
+                            <p:watermark for="vehicle_subtype_code" value="Enter Vehicle Type Code" id="vehicle_subtype_Code_watermark"/>
+                        </td>
+
+                    </tr>
+                    <tr>
+                        <td><p:outputLabel  value="Vehicle Sub Type Name" /></td>
+                        <td><p:inputText id="vehicle_subtype_name" value="#{vehicleSubCategoryEditController.instance.name}" required="true" 
+                                         requiredMessage="Vehicle Sub Type name is mandatory"></p:inputText>
+                            <p:message for="vehicle_subtype_name"/>
+                            <p:watermark for="vehicle_subtype_name" value="Enter Vehicle Type Name" id="vehicle_subtype_name_watermark"/>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td><p:outputLabel value="Vehicle Sub Type Description : "/></td>
+                        <td><p:inputTextarea id="vehicle_subtype_description" value="#{vehicleSubCategoryEditController.instance.description}"
+                                             requiredMessage="Description is mandatory"
+                                             required="true"/>
+                            <p:watermark for="vehicle_subtype_description" value="Enter Vehicle Description" id="vehicle_subtype_description_watermark"/>
+                        </td>
+
+                    </tr>
+                    <tr>
+                        <td><p:outputLabel value="vehicle Category : "/></td>
+                        <td>
+                            <p:selectOneMenu value="#{vehicleSubCategoryEditController.instance.vehicleCategoryCode}">
+                                <f:selectItems value="#{vehicleSubCategoryEditController.vehicleCatergory}" var="vehicle" itemLabel="#{vehicle.name}" itemValue="#{vehicle.code}"/>
+                            </p:selectOneMenu>
+                        </td>
+                    </tr>
+                </table> 
+
+                <h:commandButton id="sdf" style="display: none;" action="#{vehicleSubCategoryEditController.onSave()}" value="Edit Vehicle Sub Type"/>
+
+            </h:form>
+        </div>
+    </ui:define>
+</ui:composition>
+
